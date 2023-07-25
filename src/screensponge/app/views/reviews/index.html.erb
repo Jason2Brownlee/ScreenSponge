@@ -1,0 +1,14 @@
+<% title "#{@show.full_name} | Reviews" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Reviews</h2>
+<br/>
+
+
+<div>
+	A listing of all reviews for the show <%= @show.full_name %>.
+</div>
+
+<br />
+<%= render :partial => @reviews %>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

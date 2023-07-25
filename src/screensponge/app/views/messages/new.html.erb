@@ -1,0 +1,18 @@
+<% title "#{@show.full_name} | Message" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Message</h2>
+<br/>
+
+<% form_for([current_user, @show, @message]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    New Message:<br />
+    <%= f.text_area :entry %>
+  </p>
+  <p>
+    <%= f.submit "Add" %>
+  </p>
+<% end %>
+
+<br/>
+<%= link_to 'Back to Show', user_show_path(@user, @show) %>

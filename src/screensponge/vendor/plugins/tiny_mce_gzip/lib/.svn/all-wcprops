@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/21/trunk/vendor/plugins/tiny_mce_gzip/lib
+END
+tiny_mce_gzip_routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/21/trunk/vendor/plugins/tiny_mce_gzip/lib/tiny_mce_gzip_routes.rb
+END
+tiny_mce_gzip_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/21/trunk/vendor/plugins/tiny_mce_gzip/lib/tiny_mce_gzip_controller.rb
+END
+gzip_action_cache.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/21/trunk/vendor/plugins/tiny_mce_gzip/lib/gzip_action_cache.rb
+END
+tiny_mce_gzip.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/21/trunk/vendor/plugins/tiny_mce_gzip/lib/tiny_mce_gzip.js
+END

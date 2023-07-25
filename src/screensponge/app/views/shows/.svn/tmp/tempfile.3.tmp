@@ -1,0 +1,14 @@
+<tr id="<%= dom_id(show) %>">
+	<td><%= link_to show.name, [@user, show] %></td>
+    <td><%= show.show_type.name %></td>
+<<<<<<< .mine
+	<td><%= show.connected_shows.size %> users</td>
+=======
+    <td><%= show.synopsis %></td>
+>>>>>>> .r97
+	<td><%= show.global_id %></td>
+	<% if logged_in? and @user == current_user %>
+    <td><%= link_to 'Edit', edit_user_show_path(current_user, show) %></td>
+    <td><%= link_to 'Delete', [current_user, show], :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+</tr>

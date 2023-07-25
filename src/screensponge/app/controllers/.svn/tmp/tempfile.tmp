@@ -1,0 +1,113 @@
+class ShowsController < ApplicationController
+<<<<<<< .mine
+  
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :load_user, :only => [:index, :show]
+  
+=======
+  
+  # ensure the user is logged in
+  before_filter :login_required, :except => [:new, :edit]
+  
+>>>>>>> .r39
+  # GET /shows
+  # GET /shows.xml
+  def index
+    @shows = @user.shows.find(:all)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @shows }
+    end
+  end
+
+  # GET /shows/1
+  # GET /shows/1.xml
+  def show
+    @shows = @user.shows.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @shows }
+    end
+  end
+  
+  
+  
+
+  # GET /shows/new
+  # GET /shows/new.xml
+  def new
+<<<<<<< .mine
+    @shows = current_user.shows.build
+=======
+    #@shows = current_user.shows.new
+    @shows = Shows.new
+>>>>>>> .r39
+    @showTypes = ShowType.all
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @shows }
+    end
+  end
+
+  # GET /shows/1/edit
+  def edit
+    @shows = current_user.shows.find(params[:id])
+  end
+
+  # POST /shows
+  # POST /shows.xml
+  def create
+    @shows = current_user.shows.build(params[:shows])
+
+    respond_to do |format|
+      if @shows.save
+        flash[:notice] = 'Shows was successfully created.'
+        format.html { redirect_to([current_user, @shows]) }
+        format.xml  { render :xml => @shows, :status => :created, :location => @shows }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @shows.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /shows/1
+  # PUT /shows/1.xml
+  def update
+    @shows = current_user.shows.find(params[:id])
+
+    respond_to do |format|
+      if @shows.update_attributes(params[:shows])
+        flash[:notice] = 'Shows was successfully updated.'
+        format.html { redirect_to([current_user, @shows]) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @shows.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /shows/1
+  # DELETE /shows/1.xml
+  def destroy
+    @shows = current_user.shows.find(params[:id])
+    @shows.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(user_shows_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  
+  private
+  
+  def load_user
+    @user = User.find(params[:user_id])
+  end
+  
+end

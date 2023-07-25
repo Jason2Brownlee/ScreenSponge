@@ -1,0 +1,67 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/lib
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-11T08:20:31.425040Z
+104
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+authenticated_test_helper.rb
+file
+
+
+
+
+2008-08-05T22:25:15.000000Z
+d0ca5663f200a5f7c1e5a8c9720f2a98
+2008-08-05T12:55:24.351554Z
+17
+craig
+
+tasks
+dir
+
+authenticated_system.rb
+file
+
+
+
+
+2008-08-05T22:25:15.000000Z
+492969f5725cf59242570786d35f8a02
+2008-08-05T12:55:24.351554Z
+17
+craig
+
+validates_uri_existence_of.rb
+file
+
+
+
+
+2008-08-11T07:14:57.000000Z
+d939bd269a6aa025db6b729c330e9675
+2008-08-11T08:20:31.425040Z
+104
+jason
+

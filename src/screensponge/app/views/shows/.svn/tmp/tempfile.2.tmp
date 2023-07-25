@@ -1,0 +1,19 @@
+<h3>Editing shows</h3>
+
+<% form_for([current_user, @shows]) do |f| %>
+  <%= f.error_messages %>
+
+ <%= render :partial => f, :locals =>{:f => f} %>
+ 
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<<<<<<< .mine
+<%= link_to 'Show', [current_user, @shows] %> |
+=======
+<%= link_to 'Show',  [current_user, @shows] %> |
+>>>>>>> .r51
+<%= link_to 'Back', user_shows_path(current_user) %>
+

@@ -1,0 +1,22 @@
+<% title "#{@show.full_name} | Link" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Link</h2>
+<br/>
+
+
+<br/>
+<% form_for([current_user, @show, @link]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+   URL Link:<br />
+    <%= f.text_field :entry, :size=>60 %>
+  </p>
+  <p>
+    <%= f.submit "Update" %> or 
+	<%= link_to 'Delete', [@user, @show, @link], :confirm => 'Are you sure?', :method => :delete %>
+  </p>
+<% end %>
+
+<br/>
+<%= link_to 'Back to show', user_show_path(@user, @show) %>
+

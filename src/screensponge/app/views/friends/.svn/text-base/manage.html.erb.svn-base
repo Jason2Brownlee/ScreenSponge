@@ -1,0 +1,34 @@
+<% title "#{@user.login}'s Friends" %>
+<%= render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Friends"} %>
+
+<br/>
+<p>
+	<div>
+	You have 
+	<%= "#{pluralize(@user.friends.count, 'friend')}" %>:
+	<span style="font-size:80%;">
+	(<%= @user.pending_friends.count %> pending, <%= @user.requested_friends.count %> requested)
+	</span>
+	</div>
+	
+	<div>
+	<%= link_to "Add", find_user_friends_path(:user_id=>current_user) %> | 
+	<%= link_to "Invite", invite_user_friends_path(:user_id=>current_user) %>
+	</div>
+</p>
+
+<br/>
+
+<h3>Pending Friends:</h3>
+<%= render :partial => @user.friendships.pending %>
+<br/><br/>
+
+<h3>Current Friends:</h3>
+<%= render :partial => @user.friendships.accepted %>
+<br/><br/>
+	
+<h3>Requested Friends:</h3>
+<%= render :partial => @user.friendships.requested %>
+
+
+

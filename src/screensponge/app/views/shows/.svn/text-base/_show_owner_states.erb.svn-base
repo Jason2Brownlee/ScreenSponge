@@ -1,0 +1,15 @@
+<span id="owner-<%=dom_id(show)%>" class="show-owner-states">
+	<%= link_to avatar_tag(show.user, {}, {:default=>'identicon', :width=>15, :height=>15}), show.user %>
+	<span class="show-owner-name">
+		<%= link_to show.user.humanized_name, show.user %>	
+	</span>
+	<% if show.has_seen? %>
+		<span class="show-owner-seen">seen</span>
+	<% end %>
+	<% if show.is_have? %>
+		<span class="show-owner-have">have</span>
+	<% end %>
+	<% if show.is_wanted? %>
+		<span class="show-owner-want">want</span>
+	<% end %>
+</span>

@@ -1,0 +1,13 @@
+<table>
+	<% for annotation in annotations -%>
+		<tr id="<%= dom_id(annotation) %>" >
+			<td></td>
+		    <td><%= annotation.data %></td>
+			<% if logged_in? %> <!-- and @user == current_user -->
+		    	<td><%= link_to 'edit', edit_user_show_annotation_path(current_user, show, annotation) %></td>
+				<!--<td> link_to 'Delete', [current_user, @show, annotation], :confirm => 'Are you sure?', :method => :delete</td> -->
+				<td><%= link_to_remote 'delete', :url => user_show_annotation_url(current_user, show, annotation), :confirm => 'Are you sure?', :method => :delete %></td>
+			<% end %>
+		</tr>
+	<% end -%>
+</table>

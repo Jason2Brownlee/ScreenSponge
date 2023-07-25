@@ -1,0 +1,423 @@
+/* =Navigation */
+ul.nav_bar {   height: 35px; padding-left: 0px; }
+ul.nav_bar li { float: left; padding-left: 0px; font-weight: 900; font-size: 110%; }
+ul.nav_bar a { display: block; padding: 13px 15px 2px 5px; text-decoration: none; color: #1462c1; }
+ul.nav_bar a:hover { color: #779daf; }
+ul.nav_bar li.current { background: url(../images/tab_left.png) no-repeat left top; }
+ul.nav_bar li.current a { background: url(../images/tab_right.png) no-repeat right top; color: #779daf; }
+
+
+/* base.css, part of YUI's CSS Foundation */
+h1 {
+	/*18px via YUI Fonts CSS foundation*/
+	font-size:138.5%;  
+}
+h2 {
+	/*16px via YUI Fonts CSS foundation*/
+	font-size:123.1%; 
+}
+h3 {
+	/*14px via YUI Fonts CSS foundation*/
+	font-size:108%;  
+}
+h1,h2,h3 {
+	/* top & bottom margin based on font size */
+	/*margin:1em 0;*/
+}
+h1,h2,h3,h4,h5,h6,strong {
+	/*bringing boldness back to headers and the strong element*/
+	font-weight:bold; 
+}
+abbr,acronym {
+	/*indicating to users that more info is available */
+	border-bottom:1px dotted #000;
+	cursor:help;
+} 
+em {
+	/*bringing italics back to the em element*/
+	font-style:italic;
+}
+
+caption {
+	/*coordinated marking to match cell's padding*/
+	margin-bottom:.5em;
+	/*centered so it doesn't blend in to other content*/
+	text-align:center;
+}
+p,fieldset {
+	/*so things don't run into each other*/
+	margin-bottom:1em;
+}
+
+th, td {
+    border:none;
+	padding:.5em; 
+}
+
+a {
+    text-decoration: none;
+    color: #1462c1;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#hd {
+    color: #666666;
+}
+
+#globalnav {
+
+    text-align: right;
+    color: #999;
+    font-size: 92%;
+}
+
+#globalnav li {
+    display: inline;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+    border-right: 1px solid #D4D4D4;
+}
+
+#globalnav li strong a {
+    font-weight: bold;
+}
+
+#globalnav li a {
+    color: #1462C1;
+}
+
+#hd .logo {
+   
+}
+
+#hd h1 a {
+    color: #000000;
+    margin-right: 10px;
+    padding-top: 0pt;
+    padding-right: 5px;
+    padding-bottom: 0pt;
+    padding-left: 0px;
+	font-size:150%;
+	font-weight:bold;
+	margin:0em 0;
+}
+
+
+#hd h4 {
+    margin-right: 10px;
+    padding-top: 0pt;
+    padding-right: 5px;
+    padding-bottom: 0pt;
+    padding-left: 00px;
+	font-size:110%;
+	color: gray;
+}
+
+#body, #footer {
+    margin: 15px
+}
+
+#ft {
+    color: gray;
+    margin-top: 5em;
+    clear: both;
+    padding-bottom: 15px
+}
+
+#ft a, #ft a:visited {
+    color: #7777cc
+}
+
+.fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+}
+
+.userMini {
+    background: #CCCCFF;
+}
+
+.show_title {
+    font-size: 1.1em;
+}
+
+.infomessage, .errormessage {
+    padding: 0.5em;
+    font-weight: bold;
+    border: 1px solid;
+	text-align: center;
+}
+.infomessage {
+    background-color: #fdedc1;
+    border-color: #fad163
+}
+
+.errormessage {
+    color: red;
+}
+
+.pagination {
+    text-align: center;
+    clear: both;
+    margin-top: 0pt;
+    margin-right: 0pt;
+    margin-bottom: 0.5em;
+    margin-left: 0pt;
+    padding-top: 2.5em;
+    padding-right: 0pt;
+    padding-bottom: 1em;
+    padding-left: 0pt;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #dddddd;
+}
+
+.members_show_link {
+    background: url(../images/icon_users.png) left center no-repeat;
+    padding-left: 12px;
+}
+
+
+.friend tr {
+
+    color: #787878;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #d5d5d5;
+    clear: both;
+
+	
+}
+
+ /* standard form style - begin */
+   .stdform fieldset ol {
+        list-style-type: none;
+        list-style-image: none;
+        list-style-position: outside;
+        padding-top: 1em;
+        padding-right: 1em;
+        padding-bottom: 0pt;
+        padding-left: 1em;
+    }
+    
+    .stdform fieldset ol li {
+        padding-bottom: 1em;
+        float: left;
+        clear: left;
+        width: 100%;
+    }
+    
+    .stdform legend {
+        font-weight: bold;
+        color: #0092bb;
+        font-size: 1.2em;
+        padding-top: 0pt;
+        padding-right: 2px;
+        padding-bottom: 0pt;
+        padding-left: 2px;
+    }
+    
+    .stdform legend {
+        margin-left: 1em;
+    }
+    
+    .stdform label {
+        color: #3f3f3f;
+        line-height: 1.8em;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    .stdform label {
+        float: left;
+        width: 10em;
+        margin-right: 1.2em;
+        text-align: right;
+        line-height: 2em;
+    }
+    
+    .formfieldDesc {
+        color: #999999;
+        font-size: 0.9em;
+    }
+    
+    .formfieldDesc p {
+        font-family: helvetica, verdana, arial, sans-serif;
+        font-size: 1em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+    }
+    
+    .stdform li p.formfieldDesc, .stdform li p.error, .stdform li p.valid {
+        margin-top: 0.5em;
+        margin-left: 12.5em;
+    }
+    
+    .stdform input
+    [ type = "text" ], .stdform input [ type = "password" ], .stdform textarea {
+        border-top-width: 1px;
+        border-right-width-value: 1px;
+        border-right-width-ltr-source: physical;
+        border-right-width-rtl-source: physical;
+        border-bottom-width: 1px;
+        border-left-width-value: 1px;
+        border-left-width-ltr-source: physical;
+        border-left-width-rtl-source: physical;
+        border-top-style: solid;
+        border-right-style-value: solid;
+        border-right-style-ltr-source: physical;
+        border-right-style-rtl-source: physical;
+        border-bottom-style: solid;
+        border-left-style-value: solid;
+        border-left-style-ltr-source: physical;
+        border-left-style-rtl-source: physical;
+        border-top-color: #bbbbbb;
+        border-right-color-value: #bbbbbb;
+        border-right-color-ltr-source: physical;
+        border-right-color-rtl-source: physical;
+        border-bottom-color: #bbbbbb;
+        border-left-color-value: #bbbbbb;
+        border-left-color-ltr-source: physical;
+        border-left-color-rtl-source: physical;
+        background-color: #ffffff;
+        background-image: none;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-position: 0% 0%;
+        padding-top: 2px;
+        padding-right: 2px;
+        padding-bottom: 2px;
+        padding-left: 2px;
+    }
+    
+    .stdform input
+    [ type = "text" ], .stdform input [ type = "password" ] {
+        font-size: 1.3em;
+    }
+    
+    .stdform input.text {
+        width: 45%;
+    }
+    
+    .stdform input
+    [ type = "text" ]:focus, .stdform input [ type = "password" ]:focus, .stdform textarea:focus {
+        background-color: #f8f7f2;
+        background-image: none;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-position: 0% 0%;
+    }
+    
+    .stdform input
+    [ type = "radio" ], .stdform input [ type = "checkbox" ] {
+        margin-left: 20px;
+    }
+    
+    .stdform fieldset li div input
+    [ type = "radio" ] {
+        margin-left: 0pt;
+        cursor: pointer;
+    }
+    
+    .error {
+        color: red;
+    }
+    
+    p.error {
+        margin-top: 0pt;
+        margin-right: 0pt;
+        margin-bottom: 0pt;
+        margin-left: 0pt;
+        padding-top: 0pt;
+        padding-right: 0pt;
+        padding-bottom: 0pt;
+        padding-left: 0pt;
+        font-size: 0.9em;
+    }
+    
+    .stdform li p.formfieldDesc, .stdform li p.error, .stdform li p.valid {
+        margin-top: 0.5em;
+        margin-left: 12.5em;
+    }
+	 /* standard form style - end */
+		
+	/* global add show widget - start */
+	#snap-auto-complete {
+        width: 30em; /* set width here */
+        padding-bottom: 2em;
+    }
+    
+    #snap-auto-complete {
+        z-index: 9000; /* z-index needed on top instance for ie & sf absolute inside relative issue */
+    }
+    
+    #toggleAddShowButton button {
+        padding-left: 2em;
+        background: url('/images/btn_add.gif') 10% 50% no-repeat;
+    }
+    
+    #quick-add-dialog .background {
+        padding-top: 2px;
+        padding-right: 2px;
+        padding-bottom: 2px;
+        padding-left: 2px;
+        /*color: #fff4ff;*/
+    }
+    
+    .add-button {
+        font-size: 120%;
+        text-align: right;
+        /*background: url('/images/btn_add.gif') no-repeat;*/
+    }
+    
+    .show-not-listed {
+        text-align: right;
+    }
+    
+    #quickAddModule {
+        background: #eee;
+        border: 1px solid gray;
+        padding-top: 5pt;
+        padding-right: 5pt;
+        padding-bottom: 5pt;
+        padding-left: 5pt;
+    }
+    
+    #show_name {
+        font-size: 118%;
+    }
+	/* global add show widget - end */

@@ -1,0 +1,19 @@
+<% if !@show.nil? %>
+	<% title "#{@show.name} | Activities" %>
+	<h2><%= link_to @show.name, [@show.user, @show] %> | Activities</h2>
+<%else%>
+	<% title "Activity Listing" %>
+	<h2>Activity Listing</h2>
+<%end%>
+<br/>
+
+<div>
+	<%= render :partial => @activities %>
+</div>
+
+<div class="pagination">
+    <div class="page_info">
+        <%= page_entries_info @activities %>
+    </div>
+    <%= will_paginate @activities, :container => false %>
+</div>

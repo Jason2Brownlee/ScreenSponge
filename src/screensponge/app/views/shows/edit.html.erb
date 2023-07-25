@@ -1,0 +1,29 @@
+<% title "#{@show.full_name} | Edit" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Edit</h2>
+<br/>
+<br/>
+
+<% form_for([current_user, @show]) do |f| %>
+  <%= f.error_messages %>
+
+
+<table>
+	<tr>
+		<td><%= label :show, :name, 'Name:' %></td>
+		<td><%= text_field :show, :name, :size=>35 %>	</td>
+	</tr>
+	<tr>
+		<td><%= label :show, :show_type, 'Type:' %></td>
+		<td><%= f.select :show_type, Show::TypeStates %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= f.submit "Update" %></td>
+	</tr>
+</table>
+
+<% end %>
+
+<br/>
+<%= link_to 'Back to show',  [current_user, @show] %>
+

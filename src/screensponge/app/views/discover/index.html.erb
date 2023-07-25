@@ -1,0 +1,89 @@
+<% 
+action = params[:action]
+action = "browse" if !["search","browse","discover"].include?(action)
+page_title="#{action.capitalize} Shows" 
+%>
+
+<% title page_title %>
+<h2 style="font-weight:bold;font-size:160%;"><%=page_title %></h2>
+<br/>
+
+<p>
+	Discover something to watch!
+</p>
+<!-- specials -->
+<% if logged_in? and (action=="discover" or action=="browse") %>
+	<div>
+	Discover new shows from
+	<%= link_to_if (@mode!="friends_unseen"), "from friends", :action=>"friends_unseen" %> or
+	<%= link_to_if (@mode!="system_unseen"), "from everyone", :action=>"system_unseen" %>.
+	Discover shows
+	<%= link_to_if (@mode!="system_friends_unseen"), "your friends are not watching", :action=>"system_friends_unseen" %>.
+	</div>
+<% end %>
+
+<% if action=="search" %>
+	Searched for "<b><%= params[:search_show] %></b>"
+	<% if @shows.empty? and logged_in? and !params[:search_show].nil? and !params[:search_show].blank? %>
+	<div>
+		No results, add the show
+		<b>
+		"<%= link_to params[:search_show], new_user_show_path(current_user,:show_name=>params[:search_show])  %>"
+		</b>
+	</div>
+	<% end %>
+<% end %>
+
+<!-- quick add -->
+<% if logged_in? %>
+	<div>
+		<%= render :partial => 'shows/global_quick_add' %>	
+	</div>
+<% end %>
+
+<br/>
+
+<table width="100%" cellspacing="0" cellpadding="0">
+	<tr valign="top" >
+
+		<br/>
+		<!-- primary list -->
+		<td width="65%">
+			<div style="padding-right:2.5em;">
+								
+				<!-- filter -->
+				<% if @mode.nil? %>
+				<div>
+					<%= render :partial => 'shows/show_filter', :locals=>{:state_enabled=>false} %>
+				</div>
+				<% end %>
+								
+				<!-- results -->
+				<div>					
+					<%= render :partial => @shows, :locals=>{:suppress_owner_state=>true, :display_children=>true} %>
+				</div>
+				<div class="pagination">
+				    <div class="page_info">
+				        <%= page_entries_info @shows %>
+				    </div>
+				    <%= will_paginate @shows, :container => false %>
+				</div>
+			</div>	
+		</td>
+	
+		<!-- mini lists -->
+        <td>
+            <!-- popular -->
+            <div style="padding-bottom:0.4em;padding-top:0.4em;">
+                <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;">
+                    <div>
+                        <h4 style="font-weight:bold;font-size:110%;">Popular Shows</h4>
+                    </div>
+                    <div>
+                        <%= render :partial => Show.popular.find(:all, :limit=>5), :locals=>{:suppress_owner_state=>true, :display_narrow=>true } %>
+                    </div>
+                </div>
+            </div>
+        </td>
+	</tr>
+</table>

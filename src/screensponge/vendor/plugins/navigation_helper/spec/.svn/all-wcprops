@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/spec
+END
+navigation_helper_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/spec/navigation_helper_spec.rb
+END
+spec_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/spec/spec_helper.rb
+END
+rcov.opts
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/spec/rcov.opts
+END
+spec.opts
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/spec/spec.opts
+END

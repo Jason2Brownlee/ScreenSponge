@@ -1,0 +1,173 @@
+	 /* show item - start */
+	
+	.show tr.show-item {
+        color: #787878;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: #d5d5d5;
+        clear: both;
+    }
+	
+	.show #child_shows_list tr.show-item {
+        color: #787878;
+        border-top-width: 1px;
+        border-top-style: dotted;
+        border-top-color: #d5d5d5;
+        clear: both;
+    }
+	
+    .show td {
+        padding-top: 3px;
+        padding-right: 0px;
+    }
+    
+    .show-name {
+        font-size: 120%;
+    }
+    
+    .show-control {
+        font-size: 90%;
+        text-align: right;
+    }
+	
+	.show-control-narrow {
+		font-size: 90%;
+		padding-top:2px;
+	}
+    
+    .request-control-group {
+		background:#F2F2F2;
+		padding-top: 1pt;
+        padding-right: 1pt;
+        padding-bottom: 1pt;
+        padding-left: 1pt;
+		font-size:90%
+	}
+	
+	.request-control-group a {
+		padding-left: 0.05em;
+		padding-right: 0.05em;
+	}
+	
+	.request-control-group a:hover {
+		color: black;
+		text-decoration: none;
+		padding-left: 0.05em;
+		padding-right: 0.05em;
+	}
+   
+	.request-action a:hover  {
+		background-color: #FFDA6B;		
+	}
+	
+	.request a  {
+		color: white;
+		background-color: #EBB000;
+	}
+	
+	/* add show buttons - start */
+	.show-control-group {
+		background:#F2F2F2;
+		padding-top: 2pt;
+        padding-right: 2pt;
+        padding-bottom: 2pt;
+        padding-left: 2pt;
+	}
+	
+	.show-control a {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	
+	.show-control a:hover {
+		color: black;
+		text-decoration: none;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	
+	.seen a {
+		color: white;
+		background-color:#2EB800;
+		font-stretch:semi-condensed;
+	}
+	
+	.have a {
+		color: white;
+		background-color:#668CFF;
+	}
+	
+	.want a {
+		color: white;
+		background-color:#EB3B00;
+	}
+	
+	.seen-action a:hover  {
+		background-color: #CAFFD8;
+	}
+	
+	.have-action a:hover  {
+		background-color: #C9EAF3;
+	}
+	
+	.want-action a:hover  {
+		background-color: #FFDFDF;
+	}
+	
+	.clear-action a {
+		color: black;
+		background: white;
+		padding-top: 0pt;
+        padding-right: 1pt;
+        padding-bottom: 0pt;
+        padding-left: 1pt;
+	}
+	
+	.clear-action a:hover {
+		color: black;
+		background: grey;
+		padding-top: 0pt;
+        padding-right: 1pt;
+        padding-bottom: 0pt;
+        padding-left: 1pt;
+	}
+	
+    a {
+        text-decoration: none;
+        color: #1462c1;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+	/* add show buttons - end */
+	
+	/* show owner states - start */
+	 .show-owner-states {
+ 		font-size: 90%;
+		background-color: #f1f6fa;
+		padding-top: 2pt;
+        padding-right: 2pt;
+        padding-bottom: 2pt;
+        padding-left: 2pt;
+ 	}
+	.show-owner-seen {
+		color: white;
+		background-color:#2EB800;
+	}
+	
+	.show-owner-all {
+		color: white;
+		background-color:#ccc;
+	}
+	
+	.show-owner-have {
+		color: white;
+		background-color:#668CFF;
+	}
+	
+	.show-owner-want {
+		color: white;
+		background-color:#EB3B00;
+	}
+	/* show owner states - end */

@@ -1,0 +1,101 @@
+<style type="text/css">
+    a.join {
+        display: block;
+        width: 9.5em;
+        text-align: center;
+        margin-top: 1em;
+        margin-right: auto;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        background-color: #97cd39;
+        background-position: 0% 0%;
+        color: #ffffff;
+        font-size: 1.6em;
+        padding-top: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-left: 4px;
+    }
+    
+    a.join:hover {
+        text-decoration: none;
+    }
+    
+    #intro {
+        background: #cee;
+        padding: 5px
+    }
+    
+    #intro b {
+        color: black;
+    }
+    
+    #intro ul {
+        margin: 1em;
+    }
+    
+    #intro ul {
+        margin-left: 2em;
+    }
+    
+    #intro li {
+        list-style: decimal outside;
+    }
+    
+    #intro li {
+        list-style: disc outside;
+    }
+</style>
+<% title site_motto %>
+<br/>
+<div class="yui-gc">
+    <div class="yui-u first">
+        <div id="intro" style="background:#cee;">
+            <span style="font-size:150%;">Welcome to <b>Screen Sponge</b>,
+                soak up movies and TV shows!</span>
+            <ul style="font-size:140%;">
+                <li style="background:#cee;">
+                    <b>Track</b>
+                    shows you're watching
+                </li>
+                <li style="background:#cee;">
+                    <b>Swap</b>
+                    shows with your friends
+                </li>
+                <li style="background:#cee;">
+                    <b>Discover</b>
+                    something to watch
+                </li>
+            </ul>
+        </div>
+        <br/>
+        <h2>Hot Shows</h2>
+        <br/>
+        <div>
+            <%= render :partial => @hot_shows, :locals=>{:suppress_owner_state=>true} %>
+        </div>
+        <br/>
+        <div style="font-size:80%;padding-top:1em;text-align:right;">
+            <%= link_to "All shows", discover_path %>
+        </div>
+    </div>
+    <div class="yui-u">
+        <% if logged_in? %>
+        <h2>Recent Shows</h2>
+        <br/>
+        <div id="your-feed">
+            <%= render :partial => @recent_shows, :locals=>{:suppress_owner_state=>true,:display_narrow=>true} %>
+        </div>
+        <% else %>
+        <br/>
+        <br/>
+        <a id='join_submit' class="join" href="/u/new">Start sharing - Join!</a>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <%= render :partial => 'sessions/signin_mini' %>
+        <% end %>
+    </div>
+</div>

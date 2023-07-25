@@ -1,0 +1,14 @@
+<% title "#{@show.full_name} | Messages" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Messages</h2>
+<br/>
+
+
+<div>
+	A listing of all messages for the show <%= @show.full_name %>.
+</div>
+
+<br />
+<%= render :partial => @messages %>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

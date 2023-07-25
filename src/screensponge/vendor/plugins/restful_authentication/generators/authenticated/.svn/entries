@@ -1,0 +1,55 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/vendor/plugins/restful_authentication/generators/authenticated
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-05T12:59:03.835568Z
+20
+craig
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+USAGE
+file
+
+
+
+
+2008-08-05T22:25:19.000000Z
+cdb2aed081ecd6e02941a4f298da3e72
+2008-08-05T12:59:03.835568Z
+20
+craig
+
+authenticated_generator.rb
+file
+
+
+
+
+2008-08-05T22:25:19.000000Z
+af3ae21f341cae0ce609b4ff62cd3ad2
+2008-08-05T12:59:03.835568Z
+20
+craig
+
+templates
+dir
+

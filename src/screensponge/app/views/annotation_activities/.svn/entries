@@ -1,0 +1,40 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/app/views/annotation_activities
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-30T07:51:07.116355Z
+470
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+_annotation_activity.html.erb
+file
+
+
+
+
+2008-08-30T07:43:58.000000Z
+2c8953d3659d588b1e750b90e906a507
+2008-08-30T07:51:07.116355Z
+470
+jason
+

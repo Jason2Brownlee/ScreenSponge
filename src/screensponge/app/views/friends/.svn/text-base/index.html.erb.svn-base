@@ -1,0 +1,76 @@
+<% title "#{@user.humanized_name}'s Friends Shows" %>
+<%= render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Friends Shows"} %>
+
+<br/>
+
+
+<table width="100%">
+	<tr valign="top">
+		<td width="75%" style="padding-right:2em;">
+		
+		<% if @user.friends.empty? %>
+			No friends shows,
+			<%= link_to "add", find_user_friends_path(current_user) %> or
+			<%= link_to "invite", invite_user_friends_path(current_user) %>
+			friends.
+		<% end %>	
+		
+			
+		<% if !@user.friends.empty? %>
+			<div>
+				<%= render :partial => 'shows/show_filter', :locals=>{:user=>@user, :action=>"filter", :friends_enabled=>true} %>
+			</div>
+			<div>
+				<% if !@friend_param.nil? and !@friend_param.blank? %>
+					<!-- specific user - do not supress states -->
+					<%= render :partial => @shows %>
+				<% else %>
+					<!-- suppress states, we are in aggregate mode -->
+					<%= render :partial => @shows, :locals=>{:suppress_owner_state=>true} %>
+				<% end %>
+				
+			</div>
+			<div class="pagination">
+			    <div class="page_info">
+			        <%= page_entries_info @shows %>
+			    </div>
+			    <%= will_paginate @shows, :container => false %>
+			</div>
+		<% end %>
+		</td>
+		<td>
+			<h2>Friends</h2>
+				<div>
+				You have 
+				<%= "#{pluralize(@user.friends.count, 'friend')}" %>
+				</div>
+				<div>
+					<%= link_to "Manage", manage_user_friends_path(current_user) %> |
+					<%= link_to "Add", find_user_friends_path(current_user) %> | 
+					<%= link_to "Invite", invite_user_friends_path(current_user) %>						
+				</div>
+				<br/><br/>
+			<h2>Active Friends</h2>
+			<div>
+				Showing <b><%= @active_friends.size %></b> 
+				of 
+				<b><%= @friends_count %></b>
+				<% if @active_friends.size < @friends_count %>
+					| <%= link_to "All", :controller=>"friends",:action=>'manage',:id=>@user %>
+				<% end %>
+			</div>
+			<br/>
+			<div>
+				<% for friend in @active_friends  %>
+					<%= render :partial => 'friends/friend', :locals => {:friend => friend} %>
+				<% end %>
+			</div>
+			<br/>
+			<% if !@user.friends.empty? %>
+			<div style="text-align:right;font-size:80%">
+				<%= link_to "friends wanted shows you have", :controller => "shows", :action=>"wanted_and_have" %>
+			</div>
+			<% end %>
+		</td>
+	</tr>
+<table>

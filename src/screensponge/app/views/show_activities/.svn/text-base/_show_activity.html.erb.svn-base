@@ -1,0 +1,9 @@
+<div>
+	<%= link_to avatar_tag(show_activity.user, {} , {:default=>'identicon', :width=>20, :height=>20}), show_activity.user %>
+	<%= link_to show_activity.user.humanized_name, show_activity.user %>
+	<%= show_activity.note %>
+	<%= link_to show_activity.show.full_name, [show_activity.user, show_activity.show] %>,
+	<span style="font-size:80%;">
+		<%= time_distance_or_time_stamp show_activity.created_at %>
+	</span>
+</div>

@@ -1,0 +1,27 @@
+<% title "#{@show.full_name} | Event" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Event</h2>
+<br/>
+
+<p>
+  <b>Title:</b>
+  <%=h @event.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @event.description %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%=h @event.when %>
+</p>
+
+<p>
+  <b>Shows:</b>
+  <%=h @event.shows %>
+</p>
+
+
+<br/>
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

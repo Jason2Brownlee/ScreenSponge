@@ -1,0 +1,10 @@
+<% if flash[:notice] != nil %>
+<div id="flashMessage" class="infomessage">
+    <%= flash[:notice] %>
+</div> <!-- infomessage -->
+<% end %>
+<% if flash[:error] != nil %>
+<div id="flashError" class="errormessage">
+    <%= flash[:error] %>
+</div> <!-- errormessage -->
+<% end %>

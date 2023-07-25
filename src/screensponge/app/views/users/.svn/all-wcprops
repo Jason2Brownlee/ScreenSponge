@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/470/trunk/app/views/users
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/81/trunk/app/views/users/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/394/trunk/app/views/users/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/377/trunk/app/views/users/new.html.erb
+END
+_user_mini.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/400/trunk/app/views/users/_user_mini.html.erb
+END
+_user.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/394/trunk/app/views/users/_user.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/470/trunk/app/views/users/show.html.erb
+END
+change_email_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/11/trunk/app/views/users/change_email_notification.html.erb
+END

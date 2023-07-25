@@ -1,0 +1,89 @@
+<% title "New Show" %>
+<br/>
+
+<% if not @related_shows.nil? and !@related_shows.empty? %>
+	<br/>
+	<h2>Related Shows</h2>
+	<p>
+		Are any of these shows the one you had in mind?
+	</p>
+	<br/>
+	<div>
+		<%= render :partial => @related_shows, :locals=>{:suppress_owner_state=>true} %>
+	</div>
+<% end %>
+
+
+<br/>
+<br/>
+
+<h2>New Show</h2>
+
+<% if false and (@show.name.nil? or @show.name.blank?) %>
+	<% form_tag new_user_show_path(current_user), :method=>:get do %>
+	<b>Name:</b>
+	<%= text_field_tag :show_name %>
+	<!-- :show_type => @show.type, :parent_id => @show.parent_id -->
+	<%= submit_tag "Add Show" %>
+	<% end %>
+<% else %>
+<% end %>
+<% form_for([current_user, @show]) do |f| %>
+	<!-- errors -->
+	<%= f.error_messages %>
+	<%= error_messages_for :type %>
+	<!-- hidden -->
+	<%= f.hidden_field :intention %>
+	<%= f.hidden_field :possession %>
+	
+	<table>
+		<% if not @parent_show.nil? %>
+		<tr>
+			<td><b>Parent Show: <%= @parent_show.name %></b></td>
+			<td><%= f.hidden_field :parent_id  %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td><b>Name:</b></td>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+			<td><b>Type:</b></td>
+			<td>
+			    <%= label :show, :show_type, 'Type:' %>
+			    <%= f.select :show_type, Show::TypeStates %>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div align="left">
+					<script>
+						function setActionType(action)
+						{
+							if(action == "seen")
+							{
+								document.getElementById("show_intention").value=<%= Show::Intention_seen %>;
+							}
+							else if(action == "want")
+							{
+								document.getElementById("show_possession").value=<%= Show::Possession_want %>;
+							}
+							else if(action == "have")
+							{
+								document.getElementById("show_possession").value=<%= Show::Possession_have %>;
+							}
+					    }
+					</script>
+				    <%= f.submit "Seen", :onclick =>'setActionType(\'seen\')', :class=>"show-owner-seen" %>
+					<%= f.submit "Want", :onclick =>'setActionType(\'want\')', :class=>"show-owner-want" %>
+					<%= f.submit "Have", :onclick =>'setActionType(\'have\')', :class=>"show-owner-have" %>
+				</div>
+			</td>
+		</tr>
+	</table>
+<% end %>
+
+
+
+

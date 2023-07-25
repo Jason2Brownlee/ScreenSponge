@@ -1,0 +1,325 @@
+class ShowsController < ApplicationController
+
+  before_filter :login_required, :except => [:show, :members]
+  before_filter :load_user, :except => [:index]
+  
+
+  
+  
+  def intention
+    show = Show.find(params[:id])
+    @domid = show.id
+    @show = show.getorclone_user_show(current_user)
+    
+    state = params[:state]
+    if state == 'unseen'
+      @show.unseen
+    elsif state == 'seen'
+      @show.seen
+    end
+    respond_to do |format|
+      if @show.save 
+        #ShowActivity.new_show(@show, current_user)
+        flash[:notice] = "Show was successfully marked as <b>#{state}</b>. " + view_show_flash_text(@show)
+        format.html { redirect_to(user_show_url(current_user, @show)) }
+        format.xml  { render :xml => @show, :status => :created, :location => @show }
+        format.js #{ intentions.js.rjs }
+      else
+        flash[:notice] = 'Problem occurred modifying show'
+        format.html { redirect_to(user_shows_url(current_user)) }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+        format.js { head :bad } #{ render :template => "layout/message" }
+      end
+    end
+  end
+
+  def possession
+    show = Show.find(params[:id])
+    @domid = show.id
+    @show = show.getorclone_user_show(current_user)
+    state = params[:state]
+    if state == 'want'
+      @show.want
+    elsif state == 'have'
+      @show.have
+    elsif state == 'clear'
+      @show.possession = nil;
+    end
+    respond_to do |format|
+      if @show.save
+        #ShowActivity.new_show(@show, current_user)
+        flash[:notice] = "Show was successfully marked as <b>#{state}</b>. " + view_show_flash_text(@show)
+        format.html { redirect_to(user_show_url(current_user, @show)) }
+        format.xml  { render :xml => @show, :status => :created, :location => @show }
+        format.js  { render :action => 'intention' }
+      else
+        flash[:notice] = 'Problem occurred adding show'
+        format.html { redirect_to(user_shows_url(current_user)) }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+        format.js { head :bad } #{ render :action => 'layout/message' }
+      end
+    end
+  end
+  
+
+  # GET /shows/search
+  # GET /shows/search.xml
+  def search
+    @user = current_user
+    @query=params[:query]
+    if @query == nil
+      @query = ''
+    end
+    
+    per_page = 10
+    @shows = Show.find_with_ferret(@query,  
+                                   :page => params[:page], 
+                                   :per_page => 30)
+    #                              :lazy => [:title]
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @shows }
+    end
+  end
+  
+  def browse
+    @shows = Show.paginate(:all, :page => params[:page])
+    respond_to do |format|
+      format.html #
+      format.xml  { render :xml => @shows }
+    end
+  end
+  
+  def related
+    @query=params[:query]
+    @shows = Show.top_related_for_user(@query, current_user)
+    
+    respond_to do |format|
+      format.html { render :action => "new"} #{ render(new_user_show_path(current_user)) }\
+      format.xml  { render :xml => @shows.to_xml(:only => [:name, :count, :global_id, :user_has]) }
+      format.js   { render :json => @shows.to_json(:only => [:name, :count, :global_id, :user_has]) }
+    end
+  end
+  
+  def members
+    @show = @user.shows.find(params[:id])
+    @members = @show.group_members(100)
+  end
+  
+  def wanted_and_have
+    load_user
+    @wanted_shows = @user.friends_wanted_shows_user_has(params[:page],nil)
+  end
+  
+  
+  # GET /shows
+  # GET /shows.xml
+  def index
+    if params[:user_id].nil?
+      if logged_in?
+        redirect_to user_shows_path(current_user)
+      else
+        redirect_to :controller => 'groups', :action => 'index'
+      end
+      return
+    else
+      load_user
+    end
+    
+    # retrieve the shows
+    prepare_show_options
+    @shows = buildShowFilterSortQuery(@user, params)    
+    # retrieve active shows
+    @shows_with_recent_activity = @user.shows_with_recent_activity(5)
+  end
+  
+
+  
+  def filter
+    # if !request.post?
+    #   redirect_to user_shows_path(@user)
+    #   return
+    # end
+    
+    # retrieve the shows
+    prepare_show_options
+    @shows = buildShowFilterSortQuery(@user, params)    
+    # retrieve active shows
+    @shows_with_recent_activity = @user.shows_with_recent_activity(5)
+		
+		render :action=>"index"
+  end
+
+
+
+
+
+  def add_parent
+    @show = @user.shows.find(params[:id])
+    
+    if request.put?
+      if @show.update_attributes(params[:show])
+        flash[:notice] = 'Shows was successfully created.'
+        redirect_to([@user, @show])
+      else
+        render :action => "add_parent"
+      end
+    else
+      @shows = current_user.shows.find(:all, :order=>"name ASC")
+      # never select self
+      @shows.delete(@show)
+      # never select things already in the hierarchy beyond the current parent
+      p = @show.parent
+      while(!p.nil?) do
+        if !p.parent.nil?
+          @shows.delete(p.parent)
+        end
+        p = p.parent
+      end
+          
+      # clear all children of the show (recursive children of children)
+      if !@show.children.empty?
+        clear_show_children(@show.children, @shows)
+      end
+      
+      # squash to just what we want
+      @shows = @shows.sort_by {|u| u.full_name.downcase}
+      @shows = @shows.collect {|show| [show.full_name, show.id]}
+
+    end
+  end
+  
+  
+  def clear_show_children(children, shows)
+    for child in children
+      shows.delete(child)
+      if !child.children.empty?
+        clear_show_children(child.children, shows)
+      end
+    end
+  end
+  
+
+  # GET /shows/1
+  # GET /shows/1.xml
+  def show
+    @show = @user.shows.find(params[:id])
+    
+    # always attempt to load users version of show
+    if logged_in? and @show.user!=current_user
+      @user_version = current_user.shows.find_by_global_id(@show.global_id)
+      if !@user_version.nil?
+        redirect_to([current_user, @user_version])
+        return
+      end
+    end
+    
+    @total_group_members = @show.count_group_members
+    @plot = @show.plot
+    @pictures = @show.group_pictures(3)
+    @review = @show.reviews.empty? ? @show.group_reviews(1) : @show.reviews(:first)
+    @cover = @show.cover
+    @trailer = @show.trailer
+    
+    @message = @show.messages.build
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @show }
+    end
+  end
+
+  # GET /shows/new
+  # GET /shows/new.xml
+  def new
+    name = params[:show_name]
+    show_type = params[:show_type]
+    parent_id = params[:parent_id]
+    
+    if (name.nil? or name.blank?)
+    end
+    
+    @show = current_user.shows.build
+    @show.name = name
+    
+    if show_type.nil?
+      @show.show_type = Show::TypeMovie
+    else 
+      @show.show_type = show_type
+    end
+    
+    if not parent_id.nil?
+      @parent_show = current_user.shows.find(parent_id)
+      @show.parent_id = @parent_show.id
+    end
+    
+
+    # related shows
+    if !@show.name.nil? and !@show.name.blank?
+      @related_shows = Show.find(:all, :group=>"global_id", :order=>"name ASC", 
+        :conditions => ['name like ?', "%#{@show.name}%"], :limit=>10)
+    end
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @show }
+    end
+  end
+
+  # GET /shows/1/edit
+  def edit
+    @show = current_user.shows.find(params[:id])
+  end
+
+  # POST /shows
+  # POST /shows.xml
+  def create
+    @show = current_user.shows.build(params[:show])
+
+    respond_to do |format|
+      if @show.save
+        ShowActivity.new_show(@show, current_user)
+        flash[:notice] = 'Shows was successfully created.'
+        format.html { redirect_to([current_user, @show]) }
+        format.xml  { render :xml => @show, :status => :created, :location => @show }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /shows/1
+  # PUT /shows/1.xml
+  def update
+    @show = current_user.shows.find(params[:id])
+
+    respond_to do |format|
+      if @show.update_attributes(params[:show])
+        ShowActivity.update_show(@show, current_user)
+        flash[:notice] = 'Shows was successfully updated.'
+        format.html { redirect_to([current_user, @show]) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /shows/1
+  # DELETE /shows/1.xml
+  def destroy
+    @show = current_user.shows.find(params[:id])
+    name = @show.name
+    @show.destroy
+
+    respond_to do |format|
+      flash[:notice] = "Show '" + name + "' was deleted."
+      format.html { redirect_to(user_shows_url(current_user)) }
+      format.xml  { head :ok }
+      format.js { render_text "" }
+    end
+  end
+
+end

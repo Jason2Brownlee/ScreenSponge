@@ -1,0 +1,27 @@
+<% title "#{@user.login}'s Shows" %>
+<%= render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Shows"} %>
+
+<% if @is_self %>
+	<br/>
+	<!-- render :partial => 'quick_add', :locals =>{:show => @show} -->
+<% end %>
+<br/>
+<%= render :partial => 'show_scope' %>
+
+<br/>
+<%= render :partial => @shows, :locals=>{:enabled=>@is_self} %>
+
+
+
+<div class="pagination">
+    <div class="page_info">
+        <%= page_entries_info @shows %>
+    </div>
+    <%= will_paginate @shows, :container => false %>
+</div>
+
+
+
+
+
+

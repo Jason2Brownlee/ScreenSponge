@@ -1,0 +1,23 @@
+
+<% title "#{@user.login}'s Shows | New Show" %>
+<% render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Shows | New Show"} %>
+
+<% if @shows != nil %>
+	<ul>
+	<% for related in @shows %>
+		<li><%= related.name %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+<% form_for([current_user, @show]) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f, :locals =>{:f => f} %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'All Shows', user_shows_path(current_user) %>

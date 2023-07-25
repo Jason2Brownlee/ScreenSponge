@@ -1,0 +1,81 @@
+<%
+# Expected : show
+show_observer = nil if local_assigns[:show_observer].nil?
+suppress_owner_state = false if local_assigns[:suppress_owner_state].nil?
+display_friends_with_show = false if local_assigns[:display_friends_with_show].nil?
+display_friends_want_show = false if local_assigns[:display_friends_want_show].nil?
+display_narrow = false if local_assigns[:display_narrow].nil? 
+display_children = false if local_assigns[:display_children].nil? 
+# display_fullname = !display_children if local_assigns[:display_fullname].nil?
+is_child = false if local_assigns[:is_child].nil? 
+
+%>
+
+<div style="margin: 0px 0 1px 0px;">
+    <table id="shows" class="show" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr id="<%= dom_id(show) %>" class="show-item" valign="top">
+            <!-- cover -->
+            <td width="45px">
+                <% if (cover=show.cover).nil? %>
+                <span style="font-size:80%;">no cover</span>
+                <% else %>
+                <%= link_to (render :partial => 'covers/cover_mini', :locals=>{:cover=>cover}), [show.user, show] %>
+                <% end %>
+            </td>
+            <!-- content -->
+            <td>
+                <!-- title -->
+                <div>
+                	<% show_name = (!is_child) ? show.full_name : show.name %>
+                    <span class="show-name"><%= link_to show_name, [show.user, show] %></span>
+                </div>
+                <!-- type/members -->
+                <div style="font-size:80%;">
+                   <%= show.show_type %>|
+                    <%= link_to "#{pluralize(show.group_members.size, 'member')}", {:controller=>"shows", :action=>"members",:id=>show, :user_id=>show.user} %>
+                </div>
+                <!-- suppress owner state -->
+                <% if !suppress_owner_state and show.user != current_user %>
+                <div>
+                    <%= render :partial => 'shows/show_owner_states', :locals => { :show => show} %>
+                </div>
+                <% end %>
+                <!-- friends with show -->
+                <% if display_friends_with_show %>
+                <%= render :partial =>"shows/friends_with_show", :locals=>{:show=>show} %>
+                <% end %>
+                <!-- friends who want show -->
+                <% if display_friends_want_show %>
+                <%= render :partial =>"shows/friends_want_show", :locals=>{:show=>show_observer.shows.find_by_global_id(show.global_id)} %>
+                <% end %>
+                <!-- narrow controls -->
+                <% if display_narrow %>
+                <div class="show-control-narrow">
+                    <% if can_action_show?(show) %>
+                    	<%= render :partial => 'shows/add_show_buttons', :locals => { :show => show} %>
+                    <% end %>
+                </div>
+                <% end %>
+            </td>
+            <!-- controls -->
+            <% if not display_narrow %>
+            <td width="205px">
+                <div class="show-control">
+                    <% if can_action_show?(show) %>
+                    	<%= render :partial => 'shows/add_show_buttons', :locals => { :show => show} %>
+                    <% end %>
+                </div>
+            </td>
+            <% end %>
+        </tr>
+        <% if display_children and not show.children.empty? %>
+        <tr>
+            <td colspan="3" style="padding-left:4em">
+                <div id="child_shows_list">
+                    <%= render :partial => show.children, :locals=>{:display_friends_with_show=>display_friends_with_show, :display_children => display_children, :is_child=>true, :suppress_owner_state=>suppress_owner_state} %>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

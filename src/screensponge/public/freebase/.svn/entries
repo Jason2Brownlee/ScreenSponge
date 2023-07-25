@@ -1,0 +1,67 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/public/freebase
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-31T05:50:36.177438Z
+487
+ctaylor
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+freebase.select.js
+file
+
+
+
+
+2008-08-31T06:52:20.000000Z
+f34604d0f97a4769a90988a9ffeae2cf
+2008-08-31T05:50:36.177438Z
+487
+ctaylor
+
+freebase.suggest.js
+file
+
+
+
+
+2008-08-31T06:52:20.000000Z
+dcf873a383d9aac505a030db2ac877fe
+2008-08-31T05:50:36.177438Z
+487
+ctaylor
+
+css
+dir
+
+freebase.controls.js
+file
+
+
+
+
+2008-08-31T06:52:20.000000Z
+1a195bc500d0c99c99a0a721787f2011
+2008-08-31T05:50:36.177438Z
+487
+ctaylor
+

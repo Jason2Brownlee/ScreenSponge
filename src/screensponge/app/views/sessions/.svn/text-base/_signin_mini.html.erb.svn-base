@@ -1,0 +1,30 @@
+<div style="border:1px solid green;
+;background:#e8fecd;padding-left:10px;padding-top:10px;padding-bottom:10px;width:250px">
+	<% form_tag session_path do %>
+	<div style="font-weight:bold;font-size:130%">
+		Login
+	</div>
+	<div style="font-weight:bold;padding-top:5px;">
+		email
+	</div>
+	<div>
+		<%= text_field_tag 'email', @email, :style=>"font-size:1.5em;" %>
+	</div>
+	<div style="padding-top:10px;font-weight:bold;">
+		password
+	</div>
+	<div>
+		<%= password_field_tag 'password', "", :style=>"font-size:1.5em;" %>
+	</div>
+	<div style="padding-top:10px;">
+		<%= submit_tag 'Sign In' %>
+	</div>
+	<div style="font-weight:bold;padding-top:5px;">
+		Not a member, <%= link_to "Join Now", new_user_path %>
+	</div>
+	<div style="font-size:80%;">
+		<%= check_box_tag 'remember_me' %> remember me | 
+		<%= link_to 'Forgot password?', forgot_password_path %>
+	</div>
+	<% end %>
+</div>

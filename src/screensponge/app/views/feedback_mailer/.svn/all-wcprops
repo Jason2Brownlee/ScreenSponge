@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/375/trunk/app/views/feedback_mailer
+END
+feedback_message.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/375/trunk/app/views/feedback_mailer/feedback_message.rhtml
+END

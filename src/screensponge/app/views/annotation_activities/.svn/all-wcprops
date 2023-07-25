@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/470/trunk/app/views/annotation_activities
+END
+_annotation_activity.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/470/trunk/app/views/annotation_activities/_annotation_activity.html.erb
+END

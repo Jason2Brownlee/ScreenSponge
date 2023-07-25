@@ -1,0 +1,7 @@
+<<<<<<< .mine
+<% 
+cid = "id-#{cover.entry}-#{Time.now}-#{rand()}"
+%>
+<%= image_tag(cover.entry, {:id=>cid, :onload => "resize_image('#{cid}',50)"}) %>=======
+<%= image_tag(cover.entry, {:id => "id-#{cover.entry}", 
+	:onload => "YAHOO.util.Event.onDOMReady(function(){resize_image('id-#{cover.entry}',50)});"}) %>>>>>>>> .r212

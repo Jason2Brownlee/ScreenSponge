@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/Rakefile
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/init.rb
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/install.rb
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/MIT-LICENSE
+END
+uninstall.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/uninstall.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/52/trunk/vendor/plugins/resource_hacks/README
+END

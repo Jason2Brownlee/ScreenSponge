@@ -1,0 +1,26 @@
+<% title "#{@user.login}'s Friends Wanted Shows and Have" %>
+<%= render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Friends Wanted Shows and Have"} %>
+
+<br/>
+
+<div>
+	All the shows wanted by friends, that <%= user_name_noun(@user) %> <%= @is_self ? "have" : "has "%>
+</div>
+<br/>
+
+<div>
+	<%= render :partial => @wanted_shows, :locals=>{:display_friends_want_show=>true,:show_observer=>@user} %>
+</div>
+
+<div class="pagination">
+    <div class="page_info">
+	    <%= will_paginate @wanted_shows, :container => false %>
+    </div>
+</div>
+
+
+
+
+
+
+

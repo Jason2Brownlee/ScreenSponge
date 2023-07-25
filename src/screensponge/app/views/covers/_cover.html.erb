@@ -1,0 +1,22 @@
+<% 
+if is_owner?(cover.show)
+	bg="background:#FFFFCC;"
+end
+cid = "id-#{cover.entry}-#{Time.now}-#{rand()}"
+%>
+
+
+<div style="padding-bottom:0.3em;padding-top:0.3em;">
+ <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;<%=bg %>">
+	<div>
+		<%=link_to_if is_owner?(cover.show), (image_tag(cover.entry, {:id => cid, :height => '150px', :width => '100px', :alt=>"#{cover.show.full_name}"})), [cover.show.user, cover.show, cover] %>
+	</div>
+	<div style="font-size:80%;">
+		<b><%= link_to cover.show.user.humanized_name, cover.show.user %></b> |
+		<% if is_owner?(cover.show) %>
+			<%= link_to "Edit", edit_user_show_cover_path(current_user, cover.show, cover) %> |
+		<% end %>
+		<%= time_distance_or_time_stamp cover.created_at %>
+	</div>
+ </div>
+</div>

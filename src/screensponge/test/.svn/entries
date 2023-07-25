@@ -1,0 +1,52 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/test
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-28T03:11:14.185404Z
+398
+craig
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+unit
+dir
+
+test_helper.rb
+file
+
+
+
+
+2008-08-05T07:26:28.000000Z
+30478106e9df8977e79fc045df799e29
+2008-08-05T07:24:36.378079Z
+7
+jason
+
+functional
+dir
+
+integration
+dir
+
+fixtures
+dir
+

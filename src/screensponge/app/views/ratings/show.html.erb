@@ -1,0 +1,13 @@
+<p>
+  <b>Score:</b>
+  <%=h @rating.score %>
+</p>
+
+<p>
+  <b>Shows:</b>
+  <%=h @rating.shows %>
+</p>
+
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>

@@ -1,0 +1,23 @@
+<% 
+if is_owner?(picture.show)
+	bg="background:#FFFFCC;"
+end
+
+cid = "id-#{picture.entry}-#{Time.now}-#{rand()}"
+%>
+
+
+<div style="padding-bottom:0.3em;padding-top:0.3em;">
+ <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;<%=bg %>">
+	<div>
+		<%=link_to_if is_owner?(picture.show), (image_tag(picture.entry, {:id => "#{cid}", :onload => "YAHOO.util.Event.onDOMReady(function(){resize_image('#{cid}',100)});",:alt=>"#{picture.show.full_name}"})), [picture.show.user, picture.show, picture] %>
+	</div>
+	<div style="font-size:80%;">
+		<b><%= link_to picture.show.user.humanized_name, picture.show.user %></b> |
+		<% if is_owner?(picture.show) %>
+			<%= link_to "Edit", edit_user_show_picture_path(current_user, picture.show, picture) %> |
+		<% end %>
+		<%= time_distance_or_time_stamp picture.created_at %>
+	</div>
+ </div>
+</div>

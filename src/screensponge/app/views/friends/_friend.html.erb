@@ -1,0 +1,43 @@
+<% 
+	# Expected: friend
+	show = nil if local_assigns[:show].nil?
+	show = friend.shows.find_by_global_id(show.global_id) if !show.nil?
+%>
+
+<div style="margin: 0px 0 5px 0px;">
+ <table class="friend" width="100%" border="0">
+ <tr valign="top">
+ <td width="40px">
+		<%= link_to avatar_tag(friend, {} , {:default => 'identicon', :width => 30, :height => 30}), user_shows_path(friend) %>
+ </td>
+ <td>
+	<div>
+		<span style="font-size:120%;">
+			<%= link_to friend.humanized_name, user_shows_path(friend) %>
+		</span>
+		<%= add_friend_link(friend) %>
+	</div>
+	<% if show.nil? %>
+		<!-- user data -->
+		<div style="font-size:80%;">
+			<%= link_to "#{pluralize(friend.shows.count, 'Show')}", user_shows_path(friend) %> |
+			<%= "#{pluralize(friend.friends.count, 'Friend')}" %>
+		</div>
+	<% else %>
+		<!-- show user data -->
+		<span id="owner-<%=dom_id(show)%>" class="show-owner-states">
+			<% if show.has_seen? %>
+				<span class="show-owner-seen">seen</span>
+			<% end %>
+			<% if show.is_have? %>
+				<span class="show-owner-have">have</span>
+			<% end %>
+			<% if show.is_wanted? %>
+				<span class="show-owner-want">want</span>
+			<% end %>
+		</span>
+	<% end %>
+ </td></tr>
+ </table>
+</div>
+

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/453/trunk/app/views/videos
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/453/trunk/app/views/videos/edit.html.erb
+END
+_video.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/194/trunk/app/views/videos/_video.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/453/trunk/app/views/videos/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/453/trunk/app/views/videos/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/194/trunk/app/views/videos/show.html.erb
+END

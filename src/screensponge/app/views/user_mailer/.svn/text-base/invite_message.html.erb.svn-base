@@ -1,0 +1,25 @@
+Hello <%=h @name %>,
+
+Your friend <%=h @sender.login %> (<%=h @sender.email %>) has invited you
+the Movie and TV Show organization web page <%= @site_name %>.
+
+<%=h @sender.login %> Says:
+<%=h @message %>
+
+<%= @site_name %> is all about selecting the shows you have seen, want, and have,
+swapping shows with your friends, and discovering new shows to watch.
+
+Visit <%= @site_name %>: <%= @site_motto %>
+
+  http://<%=h "#{SITE_URL}" %>
+  
+-----------------------------------------------------------------------
+
+Please don't hesitate to contact support@screensponge.com if you have any questions.
+
+Best regards,
+
+The Screen Sponge Team
+
+
+  

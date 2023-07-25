@@ -1,0 +1,17 @@
+<%
+	#Expected: nothing 
+	requests = Request.get_requests(current_user) 
+%>
+<table>
+<% for r in requests %>
+  <tr>
+	<td><%= link_to r.wanted_show.user.login, r.wanted_show.user %> has requested <%= link_to r.wanted_show.full_name, [r.wanted_show.user, r.wanted_show] %> from you.
+  	<!--
+	<span style="font-size:80%;">
+		<time_distance_or_time_stamp r.created_at >
+	</span>
+	-->
+	</td>
+  </tr>
+<% end %>
+</table>

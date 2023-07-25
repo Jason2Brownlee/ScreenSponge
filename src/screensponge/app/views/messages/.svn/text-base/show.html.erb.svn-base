@@ -1,0 +1,12 @@
+<% title "#{@show.full_name} | Message" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Message</h2>
+<br/>
+
+<p>
+  <b>Data:</b>
+  <%=h @message.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

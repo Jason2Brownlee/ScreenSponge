@@ -1,0 +1,12 @@
+<h1>Editing annotation</h1>
+
+<% form_for([current_user, @show, @annotation]) do |f| %>
+  <%= f.error_messages %>
+ 
+ <%= render :partial => f, :locals =>{:f => f} %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', [current_user, @show] %>

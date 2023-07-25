@@ -1,0 +1,23 @@
+<% if ENV['RAILS_ENV'] == 'development' %>
+<div style="text-align:center;font-size:160%;color:black;">	
+	This is Development!
+	<br/>
+</div>
+<% end %>
+
+<div class="yui-g">
+    <div class="yui-u first">
+        <div class="logo">
+            <div style="padding-bottom:0.5em;">
+                <h1><%= link_to site_name, root_path %></h1>
+                <h4><%= site_motto %></h4>
+            </div>
+        </div>
+		<%= render :partial => 'layouts/sitenav' %>
+    </div>
+    <div class="yui-u">
+        <%= render :partial => 'layouts/global_nav' %>
+		<%= render :partial => 'layouts/show_mgmt' %>
+    </div>
+</div>
+<div style="border-bottom: 1px solid #d5d5d5;"/>

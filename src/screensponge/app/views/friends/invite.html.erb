@@ -1,0 +1,30 @@
+<% title "Invite Friend" %>
+<h2>Invite a friend to <%= site_name %></h2>
+
+<br/>
+
+<p><%=error_messages_for "invite" %></p>
+
+<p>Please enter your friends details:</p>
+<br/>
+<% form_tag :controller=>"friends", :action=>"invite" do %>
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td>Friend Name:</td>
+		<td><%= text_field("invite", "name") %></td>
+	</tr>
+	<tr valign="top">
+		<td>Friend Email:</td>
+		<td><%= text_field("invite", "email_address") %></td>
+	</tr>
+	<tr valign="top">
+		<td>Personal Message:</td>
+		<td><%= text_area("invite", "message", :rows => "5") %></td>
+	</tr>
+	<tr valign="top">
+		<td><%= submit_tag "Send Invitation" %></td>
+		<td></td>
+	</tr>
+</table>
+
+<%end%>

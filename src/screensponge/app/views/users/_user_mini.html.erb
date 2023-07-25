@@ -1,0 +1,30 @@
+<%
+	# EXPECTED: => user
+	
+	title = "Profile" if local_assigns[:title].nil?
+	is_self = (logged_in? and current_user==user) ? true : false
+
+	name = (is_self) ? "Your" : "#{user.humanized_name}'s"
+
+%>
+
+<div>
+<table>
+	<tr>
+		<td align="left" valign="top">
+			<%= link_to avatar_tag(user, {} , {:default => 'identicon', :width => 35, :height => 35}), user_path(user) %>
+		</td>
+		<td align="left" valign="top" style="padding-left:0.5em;"> 
+			<div>
+				<span style="font-weight:bold;font-size:160%;">
+					<%= link_to name, user %>
+					<%= "#{title}" %>
+				</span>
+				<span style="font-size:80%;">
+					<%= add_friend_link(user) %>
+				</span>
+			</div>
+		</td>
+	</tr>
+</table>
+</div>

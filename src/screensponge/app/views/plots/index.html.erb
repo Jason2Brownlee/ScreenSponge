@@ -1,0 +1,14 @@
+<% title "#{@show.full_name} | Descriptions" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Descriptions</h2>
+<br/>
+
+<div>
+	A listing of all plots for the show <%= @show.full_name %>.
+	<br />
+</div>
+
+<br />
+<%= render :partial => @plots %>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

@@ -1,0 +1,20 @@
+<% 
+if is_owner?(plot.show)
+	bg="background:#FFFFCC;"
+end
+%>
+
+<div style="padding-bottom:0.3em;padding-top:0.3em;">
+ <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;<%=bg %>">
+	<div>
+		<%= plot.entry %>
+	</div>
+	<div style="font-size:80%;">
+		<b><%= link_to plot.show.user.humanized_name, plot.show.user %></b> |
+		<% if is_owner?(plot.show) %>
+			<%= link_to "Edit", edit_user_show_plot_path(current_user, plot.show, plot) %> |
+		<% end %>
+		<%= time_distance_or_time_stamp plot.created_at %>
+	</div>
+ </div>
+</div>

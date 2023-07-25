@@ -1,0 +1,273 @@
+<% title @show.name %>
+
+<style>  
+    .show-control {
+        text-align: right;
+		font-size: 90%;
+    }
+	#show-title li {
+	    display: inline;
+		padding-right: 0em;
+		padding-left: 0em;
+	}
+</style>
+
+<script type="text/javascript"> 
+YAHOO.util.Event.onDOMReady(function(){
+    var myTabs = new YAHOO.widget.TabView("input"); 
+	});
+</script>
+
+<%= stylesheet_link_tag 'show', :cache => true %>
+
+<table width="100%">
+    <tr valign="top">
+        <!-- left -->
+        <td width="150px" align="center">
+            <div class="show-annotation-list">
+                <h4>Cover</h4>
+                <div>
+                    <%= render :partial => @cover %>
+                </div>
+                <div class="show-annotation-manage">
+                    <% if @is_self %>
+                    <% if @show.covers.empty? %>
+                    <%= link_to "Add", new_user_show_cover_path(@user, @show) %> | <% end %>
+                    <% end %>
+                    <%= link_to "View all", user_show_covers_path(@user, @show, :list=>"all") %>
+                </div>
+            </div>
+            <!-- pictures -->
+            <div class="show-annotation-list">
+                <h4>Recent Pictures</h4>
+                <div>
+                    <%= render :partial => @pictures %>
+                </div>
+                <div class="show-annotation-manage">
+                    <% if @is_self %>
+                    <%= link_to "Add", new_user_show_picture_path(current_user, @show) %>|<% end %>
+                    <%= link_to "View all", user_show_pictures_path(@user, @show, :list=>"all") %>
+                </div>
+            </div>
+        </td>
+		
+		<!-- center -->
+		<td style="padding-right:2em;padding-left:2em;">
+		<div style="padding-bottom:1em;">
+        <!-- name -->
+        <ul id="show-title">
+            <li>
+                <span style="font-size:160%;font-weight:bold;"><% if  !@show.parent.nil? %>
+                    <%= link_to "#{@show.parent.full_name}:", [@show.parent.user, @show.parent] %>
+                    <% end %>
+                    <%=h @show.name %>
+                </span>
+                <span style="font-size:80%;"><% if @is_self %>
+                    <%= link_to 'Edit show', edit_user_show_path(current_user, @show) %>| <%= delete_show_link(@show, true) %>
+                    <% end %>
+                </span>
+            </li>
+            <li class="show-control">
+                <% if can_action_show?(@show) %>
+                <%= render :partial => 'shows/add_show_buttons', :locals => { :show => @show} %>
+                <% end %>
+            </li>
+        </ul>
+			
+			<!-- Parent/child -->
+			<div style="font-size:80%;">
+				<% if @show.parent.nil? %>
+					No parent show
+					<% if @is_self%>
+						<%= link_to "Add", add_parent_user_show_path(current_user, @show) %>
+					<% end %>
+				<% else %>
+					Belongs to <%= link_to @show.parent.name, [@show.parent.user, @show.parent] %>
+					<% if @is_self%>
+						&nbsp;<span style="font-size:80%;"><%= link_to "Edit", add_parent_user_show_path(current_user, @show) %></span>
+					<% end %>
+				<% end %>
+				|
+				<%= "#{pluralize(@show.children.count, 'child')}" %> shows
+			</div>
+			
+			<div style="font-size:90%;">
+				<!-- type -->
+				<% if @type.empty? %>
+					<%= link_to_if @is_self, "Unknown type", new_user_show_type_path(@user, @show) %> |
+				<% else %>
+					<%= link_to_if @is_self, (render :partial => @type), edit_user_show_type_path(@user, @show, @type) %> |
+				<% end %>
+				
+
+				
+				<!-- other -->
+				<%= link_to "#{pluralize(@total_group_members, 'member')}", :controller=>"shows", :action=>"members", :id=>@show, :user_id=>@user %> |
+				<%= link_to "#{pluralize(@show.count_group_messages, 'conversation')}", user_show_messages_path(@user, @show, :list=>"all") %>
+			</div>	
+		
+			
+			<!-- trailer -->
+			<br/>
+				<% if @trailer.nil? %>
+					<span style="font-size:80%;">no trailer,</span>
+				<% else %>
+					Watch the <%= link_to "Trailer", @trailer.entry %>,
+				<% end %>
+				<span class="show-annotation-manage">
+					<% if @is_self %>
+						<% if @show.videos.empty?	 %>
+							<%= link_to "Add", new_user_show_video_path(@user, @show) %> |
+						<% else %>
+							<%= link_to "Edit", edit_user_show_video_path(@user, @show, @trailer) %> |
+						<% end %>
+					<% end %>
+					<%= link_to "View all", user_show_videos_path(@user, @show, :list=>"all") %>
+				</span>
+			</div>
+		</div>
+			
+			<!-- plot -->
+			<div id="show-description" class="show-annotation-list" >
+				<h4>Description</h4>
+				<div>
+					<%= render :partial => @plot %>
+				</div>
+				<div class="show-annotation-manage">
+					<% if @is_self %>
+						<% if @show.plots.empty? %>
+							<%= link_to "Write your own", new_user_show_plot_path(@user, @show) %> |
+						<% end %>
+					<% end %>
+					<%= link_to "View all", user_show_plots_path(@user, @show, :list=>"all") %>
+				</div>
+			</div>
+                        <div class="yui-skin-sam">
+			<div id="input" class="yui-navset"> 
+                            <ul class="yui-nav"> 
+                                <li class="selected"><a href="#tab1"><em>Reviews</em></a></li> 
+                                <li><a href="#tab2"><em>Discussions</em></a></li>
+                            </ul>             
+                            <div class="yui-content"> 
+                                <!-- review -->
+                                <div id="show-review" class="show-annotation-list" >
+                                        
+                                        <div>
+                                          <% if @show.group_reviews.empty? %>
+                                            No reviews have been written yet. Be the first to <%= link_to "write one", new_user_show_review_path(@user, @show) %>.
+                                          <% else %>
+                                            <%= render :partial => @show.group_reviews(5) %>
+                                          <% end %>
+                                        </div>
+
+                                        <div class="show-annotation-manage">
+                                          <% if @show.count_group_reviews > 5 %>
+                                            <%= link_to "View all " + @show.count_group_reviews.to_s + " reviews", user_show_reviews_path(@user, @show, :list=>"all") %>
+                                          <% end %>
+
+                                                
+                                        </div>
+                                </div>
+                                <!-- discussion -->
+                                <div id="show-discussion" class="show-annotation-list" >
+                                        <h4>Recent Discussion</h4>
+                                        <div>
+                                          <% if @show.group_messages.empty? %>
+                                            No messages have been written yet. Be first to <%= link_to "start the discussion", new_user_show_message_path(@user, @show) %>.
+                                          <% else %>
+                                            <%= render :partial => @show.group_messages(5) %>	
+                                          <% end %>
+                                        </div>
+                                        <div class="show-annotation-manage">
+                                          <% if !@show.group_messages.empty? %>
+                                            <%= link_to "Write a message", new_user_show_message_path(@user, @show) %>
+                                          <% elsif @show.count_group_messages > 5 %>
+                                            | <%= link_to "View all " + @show.count_group_messages.to_s + " messages", user_show_messages_path(@user, @show, :list=>"all") %>
+                                          <% end %>
+                                        </div>
+                                </div>
+                            </div> 
+                	</div> 
+                      </div>
+			
+			
+						
+			<!-- links -->
+			<br/>
+			<div id="show-links" class="show-annotation-list" >
+				<h4>Recent Links</h4>
+				<div>
+					<%= render :partial => @show.group_links(3) %>
+				</div>
+				<div class="show-annotation-manage">
+					<% if @is_self %>
+						<%= link_to "Add", new_user_show_link_path(@user, @show) %> |
+					<% end %>
+					<%= link_to "View all", user_show_links_path(@user, @show, :list=>"all") %>
+				</div>
+			</div>
+			
+			<!-- rating -->
+			<br/>
+			<div id="show-rating" class="show-annotation-list" >
+				<h4>Rating</h4>
+				<div>
+				<%= render :partial => 'ratings/rating', :locals => {:user => @user, :show=>@show} %>
+				</div>
+				<br/>
+			</div>
+			
+			<!-- event -->		
+			<br/>	
+			 <div id="show-event" class="show-annotation-list" >
+				<h4>Show Events</h4>
+				<div>
+				<%= render :partial => @show.events(3) %>
+				</div>
+				<div class="show-annotation-manage">
+					<% if @is_self %>
+					<%= link_to "Add", new_user_show_event_path(@user, @show) %> |
+					<% end %>
+					<%= link_to "View all", user_show_events_path(@user, @show, :list=>"all") %>
+				</div>
+			 </div>
+
+			
+			<!-- children -->
+			<% if !@show.children.empty? %>
+				<div style="padding-bottom:1em;">
+					<h4 style="font-weight:bold;font-size:110%;">Child Shows</h4>
+					<div>
+						<%= render :partial => @show.children, :locals=>{:suppress_owner_state=>true} %>
+					</div>
+				</div>
+			<% end %>
+			
+		</td>
+		
+		<!-- right -->
+		<td width="30%">
+			<!-- activity -->
+			<div style="padding-bottom:1em;">
+				<h4 style="font-weight:bold;font-size:110%;">Recent Activity</h4>
+				<div style="font-size:80%;">
+					<%= link_to "View all", user_show_activities_path(:user_id=>@user, :show_id=>@show) %>
+				</div>
+				<br/>
+				<%=render :partial => @show.recent_group_activity(nil,5) %>
+			</div>
+			
+			<div style="padding-bottom:1em;">
+				<h4 style="font-weight:bold;font-size:110%;">Recent Members</h4>
+				<div style="font-size:80%;">
+					<%= link_to "View all", :controller=>"shows", :action=>"members", :id=>@show, :user_id=>@user %>
+				</div>
+				<br/>
+				<% for friend in @show.group_members(5)  %>
+					<%= render :partial => 'friends/friend', :locals => {:friend => friend} %>
+				<% end %>
+			</div>
+			
+		</td>
+	</tr>
+</table>

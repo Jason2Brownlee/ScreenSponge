@@ -1,0 +1,69 @@
+<% title "Your Profile" %>
+<%= render :partial => 'user_mini', :locals => {:user=>current_user} %>
+
+<br/>
+
+<table width="100%">
+	<tr valign="top">
+		<td width="75%" style="padding-right:2em;">
+			<!-- radar -->
+			<div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;">
+			<h2>Your Show Radar</h2>
+			<br/>
+			<% if @interesting_shows.nil? or @interesting_shows.empty?  %>
+				Sorry, there is nothing on the radar at the moment.
+			<%else%>
+				<%= render :partial => @interesting_shows, :locals=>{:suppress_owner_state=>true} %>
+			<% end %>
+			</div>
+			<br/><br/>
+			
+			<!-- wanted and friends have -->
+			<div>
+				<h2>Wanted Shows Your Friends Have</h2>
+				<br/>
+				<% if @wanted_shows_friends_have.nil? or @wanted_shows_friends_have.empty?  %>
+					Sorry, there are no wanted shows your friends have.
+				<%else%>
+					<%= render :partial => @wanted_shows_friends_have, :locals=>{:display_friends_with_show=>true, :display_children=>true} %>
+				<% end %>
+			</div>
+		</td>
+		<td>
+			<div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;">
+			<h2>Requested Shows</h2>
+			<br/>
+			<% for request in @requested %>
+				<%= render :partial => 'requests/request_wanted', :locals=>{:request=>request} %>
+			<% end %>
+			<% if @requested.empty? %>
+			You have no requested shows.
+			<% end %>
+			</div>
+			
+			<br/>
+			<div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;">
+			<h2>Pending Requests</h2>
+			<br/>
+			<% for request in @pending_requests %>
+				<%= render :partial => 'requests/pending_request', :locals=>{:request=>request} %>
+			<% end %>
+			<% if @pending_requests.empty? %>
+			You have no pending requests.
+			<% end %>
+			</div>
+			
+			<br/>
+			<div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;">
+			<h2>Pending Friends</h2>
+			<br/>
+			<%= render :partial => current_user.friendships.pending %>
+			<% if current_user.friendships.pending.empty? %>
+			You have no pending friends.
+			<% end %>
+			</div>
+			
+		</td>
+	</tr>
+<table>
+

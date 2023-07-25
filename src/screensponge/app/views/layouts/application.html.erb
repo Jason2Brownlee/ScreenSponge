@@ -1,0 +1,60 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--><!--<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">--> <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head profile="http://a9.com/-/spec/opensearch/1.1/">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+        <meta http-equiv="content-language" content="en"/>
+        <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+        <meta http-equiv="Content-Style-Type" content="text/css"/>
+        <%= yield :metadata %>
+        <title><%= yield(:title) || controller.action_name %></title>
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/base/base-min.css">-->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/container/assets/skins/sam/container.css"/>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/menu/assets/skins/sam/menu.css"/>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/button/assets/skins/sam/button.css"/>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/tabview/assets/skins/sam/tabview.css"/>
+        <%= stylesheet_link_tag 'main', 'show_item', :cache => 'main_c' %>
+        <%= yield :stylesheet %>
+		<!-- js -->
+        <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.5.2/build/yahoo-dom-event/yahoo-dom-event.js&2.5.2/build/element/element-beta-min.js">
+        </script>
+        <%= javascript_include_tag 'imagesize', :cache => 'imagesize_c' %>
+        <link rel="search" type="application/opensearchdescription+xml" href="/show-search.xml" title="ScreenSponge Search"/>
+    </head>
+    <body>
+        <div id="doc4" class="yui-t7">
+            <div id="hd">
+                <%= render :partial => "layouts/header" %>
+            </div>
+            <div id="bd">
+                <div id="message">
+                    <%= render :partial => "layouts/message" %>
+                </div>
+                <%= yield %>
+            </div>
+            <div id="ft">
+                <%= render :partial => "layouts/footer" %>
+            </div>
+        </div>
+        <!-- late script loading -->
+        <div id="application-js">
+            <%= javascript_include_tag 'application', 'quick_request', :cache => 'all_c' %>
+        </div>
+        <div id="late-yahoo-js">
+            <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.5.2/build/connection/connection-min.js&2.5.2/build/animation/animation-min.js&2.5.2/build/autocomplete/autocomplete-min.js&2.5.2/build/container/container-min.js&2.5.2/build/menu/menu-min.js&2.5.2/build/button/button-min.js&2.5.2/build/tabview/tabview-min.js">
+            </script>
+        </div>
+        <div id="late-prototype-js">
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js">
+            </script>
+        </div>
+        <div id="yield-js">
+            <%= yield :script %>
+        </div>
+        <div id="google-analytics">
+            <%= render :partial => "layouts/google_analytics" %>
+        </div>
+    </body>
+</html>

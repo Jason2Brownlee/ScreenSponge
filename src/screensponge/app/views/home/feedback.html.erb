@@ -1,0 +1,72 @@
+<style>
+	#feedback {
+		font-size:110%;
+	}
+	#feedback ul { 
+	    /*giving blockquotes and lists room to breath*/ 
+	    margin:1em; 
+	} 
+	#feedback ul { 
+	    /*bringing lists on to the page with breathing room */ 
+	    margin-left:2em; 
+	} 
+	#feedback li { 
+	    /*giving OL's LIs generated numbers*/ 
+	    /*list-style: decimal outside;  */   
+	} 
+	#feedback li { 
+	    /*giving UL's LIs generated disc markers*/ 
+	    /*list-style: disc outside; */
+	} 
+</style>
+
+<% title "Feedback" %>
+
+<h2>Feedback</h2>
+
+<br/>
+
+<p class="intro_text">
+	<div id="feedback">
+		We love feedback, please let us know what you think about <%= site_name %>.
+	</p>
+    <ul>
+    	<li>
+    		<a href="http://getsatisfaction.com/screensponge/"><img alt="Favicon" src="http://www.getsatisfaction.com/favicon.gif" style="vertical-align: middle;" /></a> Join the conversation on <a href="http://getsatisfaction.com/screensponge/"/>Get Satisfaction</a>
+    	</li>
+        <li>
+        	<img alt="Favicon" src="http://assets1.twitter.com/images/favicon.ico" style="vertical-align: middle;" /> Follow us on <a href="http://twitter.com/screensponge"/>Twitter</a>
+   		</li>
+        <li>
+            <%= image_tag("email.gif") %> You may send us an email to <%= mail_to 'support@screensponge.com' %>
+        </li>
+    </ul>
+	</div>
+</p>
+
+<br/>
+<hr/>
+
+<h3>Send message</h3>
+<%=error_messages_for "feedback" %>
+<% form_tag :controller=>"home", :action=>"send_feedback_request" do %>
+<table>
+	<tr valign="top">
+		<td>Your Name:</td>
+		<td><%= text_field("feedback", "name") %></td>
+	</tr>
+	<tr valign="top">
+		<td>Your Email:</td>
+		<td><%= text_field("feedback", "email_address") %></td>
+	</tr>
+	<tr valign="top">
+		<td>Your Message:</td>
+		<td><%= text_area("feedback", "message", :rows => 10) %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= submit_tag "Send Message" %></td>
+	</tr>
+</table>
+
+<%end%>

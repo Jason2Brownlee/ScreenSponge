@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/!svn/ver/398/trunk/test/fixtures
+END
+acquired_states.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/37/trunk/test/fixtures/acquired_states.yml
+END
+links.yml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/182/trunk/test/fixtures/links.yml
+END
+reviews.yml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/97/trunk/test/fixtures/reviews.yml
+END
+show_url_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/37/trunk/test/fixtures/show_url_types.yml
+END
+possessions.yml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/244/trunk/test/fixtures/possessions.yml
+END
+videos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/182/trunk/test/fixtures/videos.yml
+END
+intentions.yml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/107/trunk/test/fixtures/intentions.yml
+END
+friend_activities.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/163/trunk/test/fixtures/friend_activities.yml
+END
+annotations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/59/trunk/test/fixtures/annotations.yml
+END
+view_states.yml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/37/trunk/test/fixtures/view_states.yml
+END
+pictures.yml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/104/trunk/test/fixtures/pictures.yml
+END
+annotation_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/59/trunk/test/fixtures/annotation_types.yml
+END
+annotation_activities.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/163/trunk/test/fixtures/annotation_activities.yml
+END
+plots.yml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/98/trunk/test/fixtures/plots.yml
+END
+covers.yml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/113/trunk/test/fixtures/covers.yml
+END
+medias.yml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/37/trunk/test/fixtures/medias.yml
+END
+shows.yml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/29/trunk/test/fixtures/shows.yml
+END
+show_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/37/trunk/test/fixtures/show_types.yml
+END
+types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/109/trunk/test/fixtures/types.yml
+END
+activities.yml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/163/trunk/test/fixtures/activities.yml
+END
+show_activities.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/163/trunk/test/fixtures/show_activities.yml
+END
+events.yml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/205/trunk/test/fixtures/events.yml
+END
+messages.yml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/97/trunk/test/fixtures/messages.yml
+END
+ratings.yml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/205/trunk/test/fixtures/ratings.yml
+END
+notification_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/37/trunk/test/fixtures/notification_types.yml
+END
+requests.yml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/398/trunk/test/fixtures/requests.yml
+END
+friendships.yml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/34/trunk/test/fixtures/friendships.yml
+END

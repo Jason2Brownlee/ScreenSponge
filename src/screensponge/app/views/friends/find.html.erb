@@ -1,0 +1,26 @@
+<% title "Browse Users" %>
+
+<br/>
+<div>
+<h2 style="font-weight:bold;font-size:160%;">Browse Users</h2>
+</div>
+
+<div align="center">
+  <% form_tag find_user_friends_path(:user_id=>current_user), :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], :size => 15 %>
+    <%= submit_tag "Find Friends", :name => nil %>
+  <% end %>
+</div>
+
+<% if @users.nil? or @users.empty? %>
+	No Users
+<% else %>
+	<% for user in @users %>
+		<div>
+			<%= render :partial => 'friends/friend', :locals=>{:friend => user} %>
+		</div>
+	<% end %>
+	<div class="apple_pagination">
+	      <%= will_paginate @users, :container => false %>
+	</div>
+<% end %>

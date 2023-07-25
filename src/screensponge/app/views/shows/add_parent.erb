@@ -1,0 +1,23 @@
+<% title "#{@show.name} | Parent Show" %>
+<h2><%= link_to @show.name, [@user,@show] %> | Parent Show</h2>
+<br/>
+
+
+<div>
+	<h3>Select a parent show for '<%= @show.name %>'</h3>
+</div>
+<br/>
+<% form_for([current_user, @show], :url=>{:action=>"add_parent"}, :method=>"put") do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    Parent Show:<br />
+    <%= f.select :parent_id, @shows, {:include_blank => "NONE (no parent)"} %>
+  </p>
+  <p>
+    <%= f.submit "Set" %>
+  </p>
+<% end %>
+
+<br/>
+<%= link_to 'Back to Show', user_show_path(@user, @show) %>

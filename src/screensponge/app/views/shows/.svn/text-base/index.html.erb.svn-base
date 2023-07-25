@@ -1,0 +1,62 @@
+<% title "#{@user.login}'s Shows" %>
+<div class="yui-g">
+    <%= render :partial => 'users/user_mini', :locals => {:user=>@user, :title=>"Shows"} %>
+    <br/>
+</div>
+<div class="yui-ge">
+    <div class="yui-u first">
+        <!-- primary list -->
+        <div style="padding-right:2em;">
+            <p>
+                <% if @is_self %>
+                You have <b><%= pluralize(@user.shows.count, 'show') %></b>: 
+				<span style="font-size:80%;">
+				(
+				<%= @user.shows.seen.count %> seen,
+				<%= @user.shows.want.count %> want,
+				<%= @user.shows.have.count %> have
+				)
+				</span>
+				<% if @user.shows.empty? %>
+				<br/>
+				<br/>
+                <%= link_to "Browse", discover_path %> for shows you want, have or have seen.<% end %>
+                <% else %>
+                <%= user_name_noun(@user) %> has <b><%= pluralize(@user.shows.count, 'show') %></b>:
+				<span style="font-size:80%;">
+				(
+				<%= @user.shows.seen.count %> seen,
+				<%= @user.shows.want.count %> want,
+				<%= @user.shows.have.count %> have
+				)
+				</span>
+				<% end %>
+            </p>
+            <br/>
+			<% if !@user.shows.empty? %>
+            <div>
+                <%= render :partial => 'show_filter', :locals=>{:user=>@user, :action=>"filter"} %>
+            </div>
+            <div id="shows_list">
+                <%= render :partial => @shows, :locals=>{:display_friends_with_show=>true, :display_children=>true} %>
+            </div>
+			<div class="pagination">
+	            <div class="page_info">
+	                <%= page_entries_info @shows %>
+	            </div>
+	            <%= will_paginate @shows, :container => false %>
+	        </div>
+			<% end %>
+        </div>
+    </div>
+    <div class="yui-u">
+        <h2>Active Shows</h2>
+        <br/>
+        <div>
+            <%= render :partial => @shows_with_recent_activity, :locals=>{:suppress_owner_state=>true, :display_narrow=>true } %>
+        </div>
+		<% if @shows_with_recent_activity.nil? or @shows_with_recent_activity.empty? %>
+		Sorry, there is no recent show activity.
+		<% end %>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/vendor/plugins/resource_hacks/test
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+test_helper.rb
+file
+
+
+
+
+2008-08-07T04:16:44.000000Z
+8fdde0a803dfb996b9579d15c8ad3da0
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+resource_hacks_test.rb
+file
+
+
+
+
+2008-08-07T04:16:43.000000Z
+49b25258c044a2ac7b2816c7e3ab6a13
+2008-08-07T09:11:32.217249Z
+52
+jason
+

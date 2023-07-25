@@ -1,0 +1,124 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/app/views
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-31T07:06:18.851730Z
+499
+craig
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+accounts
+dir
+
+request_mailer
+dir
+
+passwords
+dir
+
+home
+dir
+
+friends
+dir
+
+annotations
+dir
+
+pictures
+dir
+
+layouts
+dir
+
+users
+dir
+
+sitemap
+dir
+
+shows
+dir
+
+events
+dir
+
+sessions
+dir
+
+ratings
+dir
+
+user_mailer
+dir
+
+messages
+dir
+
+links
+dir
+
+roles
+dir
+
+reviews
+dir
+
+feeds
+dir
+
+common
+dir
+
+videos
+dir
+
+friend_activities
+dir
+
+annotation_activities
+dir
+
+covers
+dir
+
+plots
+dir
+
+activities
+dir
+
+show_activities
+dir
+
+requests
+dir
+
+feedback_mailer
+dir
+
+friendships
+dir
+
+discover
+dir
+

@@ -1,0 +1,5 @@
+page["control-show_#{@domid}"].replace :partial => 'shows/add_show_buttons', 
+                                       :locals  => {:show => @show}
+page["message"].replace_html :partial => 'layouts/message', 
+                             :locals  => {:notice => flash[:notice] }                                
+#page["control-" + dom_id(@show)].highlight

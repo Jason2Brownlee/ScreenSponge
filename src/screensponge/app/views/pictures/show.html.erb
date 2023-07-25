@@ -1,0 +1,20 @@
+<% title "#{@show.full_name} | Picture" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Picture</h2>
+<br/>
+
+<div>
+<%= render :partial => 'picture_full', :locals=>{:picture=>@picture} %>
+</div>
+
+<div>
+	Source: <%= @picture.entry %>
+</div>
+
+<% if is_owner?(@show) %>
+<div>
+	<%= link_to "Edit", edit_user_show_picture_path(current_user, @show, @picture) %>
+</div>
+<% end %>
+
+<br/>
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

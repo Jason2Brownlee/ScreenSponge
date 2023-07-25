@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  show: 
+  annotation_type: 
+  data: MyText
+
+two:
+  show: 
+  annotation_type: 
+  data: MyText

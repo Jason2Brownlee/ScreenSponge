@@ -1,0 +1,28 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/vendor/plugins/navigation_helper/tasks
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-21T03:59:53.393233Z
+237
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+navigation_helper_tasks.rake
+file
+
+
+
+
+2008-08-21T01:10:58.000000Z
+5b37fc918ef52a55a2251e5de64b2b02
+2008-08-21T03:59:53.393233Z
+237
+jason
+

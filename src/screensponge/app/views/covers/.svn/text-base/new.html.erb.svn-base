@@ -1,0 +1,16 @@
+<% title "#{@show.full_name} | Cover" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Cover</h2>
+
+<% form_for([current_user, @show, @cover]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    Cover Link:<br />
+    <%= f.text_field :entry, :size=>60 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

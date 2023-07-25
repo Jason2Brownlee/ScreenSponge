@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/!svn/ver/270/trunk/db/fixtures
+END
+001_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/26/trunk/db/fixtures/001_users.rb
+END
+002_movies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/270/trunk/db/fixtures/002_movies.rb
+END

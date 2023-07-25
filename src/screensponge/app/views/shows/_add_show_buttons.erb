@@ -1,0 +1,21 @@
+<%# doesn't use ajax on a state change that would possibiliy add the show for the first time to enable pages to reload in a correct state
+limit_ajax = false if local_assigns[:limit_ajax].nil?
+limit_ajax = false if show.user==current_user %>
+<span id="control-<%=dom_id(show)%>"><span class="show-control-group"/><% if show.has_seen?(current_user) %>
+    <span class="show-control seen"><%= link_to_remote "SEEN", :url => intention_user_show_path(current_user, show, :state => "unseen"), :method => :put %>
+    </span><% else %>
+    <span class="show-control seen-action"><% if limit_ajax %>
+        <%= link_to "SEEN", intention_user_show_path(current_user, show, :state => "seen"), :method => :put %>
+        <% else %>
+        <%= link_to_remote "SEEN", :url => intention_user_show_path(current_user, show, :state => "seen"), :method => :put %>
+        <% end %>
+    </span><% end %>
+    <% if show.is_have?(current_user) %>
+	    <span class="show-control have"><%= link_to_remote 'HAVE', :url => possession_user_show_path(current_user, show, :state => "clear"), :method => :put %></span>	<% else %>		<span class="show-control have-action"><% if limit_ajax %>	        <%= link_to 'HAVE', possession_user_show_path(current_user, show, :state => "have"), :method => :put %>	        <% else %>	        <%= link_to_remote 'HAVE', :url => possession_user_show_path(current_user, show, :state => "have"), :method => :put %>	        <% end %>	    </span>	<% end %>	<% if show.is_wanted?(current_user) %>
+	    <span class="show-control want"><%= link_to_remote 'WANT', :url => possession_user_show_path(current_user, show, :state => "clear"), :method => :put %></span>	<% else %>		<span class="show-control want-action"><% if limit_ajax %>
+	        <%= link_to 'WANT', possession_user_show_path(current_user, show, :state => "want"), :method => :put %>
+	        <% else %>
+	        <%= link_to_remote 'WANT', :url => possession_user_show_path(current_user, show, :state => "want"), :method => :put %>
+	        <% end %>
+	    </span>	<% end %>
+</span>

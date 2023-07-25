@@ -1,0 +1,13 @@
+<% title "#{@show.full_name} | Covers" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Covers</h2>
+
+
+<div>
+	A listing of all covers for the show <%= @show.full_name %>.
+</div>
+
+<br />
+<%= render :partial => @covers %>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

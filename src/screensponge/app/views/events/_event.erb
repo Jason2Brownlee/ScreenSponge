@@ -1,0 +1,36 @@
+<% 
+if is_owner?(event.show)
+	annotation_class="owner-show-annotation-content"
+else
+	annotation_class="show-annotation-content"
+end
+%>
+
+<div id="<%= dom_id(event) %>" class="show-annotation-container">
+    <div class="<%= annotation_class %>">
+        <acronym id="when" class="published" title="<%= event.when %>">
+            <span class="pub-month"><%= event.when.strftime('%b') %></span>
+            <span class="pub-date"><%= event.when.day %></span>
+        </acronym>
+        <div class="pub-content-final">
+            <h3><%= event.title %></h3>
+            <p>
+                <%= event.description %>
+            </p>
+        </div>
+        <div class="show-annotation-modify">
+            <b><%= link_to event.show.user.humanized_name, event.show.user %></b>
+            <% if is_owner?(event.show) %>
+            | <%= link_to "edit", edit_user_show_event_path(current_user, event.show, event) %> 
+			| <%= link_to_remote "delete",
+    			:url =>  user_show_event_url(current_user, event.show, event),
+ 				:method => :delete,
+    			:update => { :success => dom_id(event), :failure => "error" },
+				:confirm => "Confirm deletion of event '#{event.title}' ?" %>
+            |<% end %>
+            <%= time_distance_or_time_stamp event.created_at %>
+        </div>
+    </div>
+</div>
+
+

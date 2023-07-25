@@ -1,0 +1,60 @@
+<%= javascript_include_tag 'prototype','livepipe','rating' %>
+
+<style>
+    .rating_container {
+        clear: both;
+    }
+    
+    .rating_container a {
+        float: left;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border: 0;
+        background-image: url("/images/rating.gif");
+    }
+    
+    .rating_container a.rating_off {
+        background-position: 0 0px;
+    }
+    
+    .rating_container a.rating_half {
+        background-position: 0 -25px;
+    }
+    
+    .rating_container a.rating_on {
+        background-position: 0 -50px;
+    }
+    
+    .rating_container a.rating_selected {
+        background-position: 0 -75px;
+    }
+</style>
+
+<!-- or just provide an empty container -->  
+<div id="show_rating" class="rating_container"></div> 
+
+
+<% for rating in @ratings %>
+  <tr>
+    <td>
+    	<div id="show_rating" class="rating_container"></div>
+		<script>
+		    var rating_six = new Control.Rating('show_rating', {
+		        value: <%= rating.score %>,
+		        rated: false,
+		        min: 1,
+		        max: 10,
+		        multiple: true,
+				updateUrl: '<%= js_update_user_show_ratings_path(@user, @show) %>/update',
+				updateParameterName: 'rating[score]'
+		    });
+		</script>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New rating', new_user_show_rating_path(@user, @show) %>

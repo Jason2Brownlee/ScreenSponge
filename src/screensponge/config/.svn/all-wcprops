@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/!svn/ver/483/trunk/config
+END
+routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/478/trunk/config/routes.rb
+END
+database.yml
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/!svn/ver/8/trunk/config/database.yml
+END
+boot.rb
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/!svn/ver/7/trunk/config/boot.rb
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/483/trunk/config/environment.rb
+END
+aaf.rb
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/!svn/ver/82/trunk/config/aaf.rb
+END
+ferret_server.yml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/154/trunk/config/ferret_server.yml
+END

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  references: 
+  name: MyString
+  description: MyText
+  note: MyText
+  rating: 1
+  tags: MyText
+
+two:
+  references: 
+  name: MyString
+  description: MyText
+  note: MyText
+  rating: 1
+  tags: MyText

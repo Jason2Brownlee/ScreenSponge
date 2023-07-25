@@ -1,0 +1,14 @@
+<% title "#{@show.full_name} | Trailers" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Trailers</h2>
+<br/>
+
+
+<div>
+	A listing of all videos for the show <%= @show.name %>.
+</div>
+
+<br />
+	<%= render :partial => @videos %>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

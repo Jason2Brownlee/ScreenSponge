@@ -1,0 +1,35 @@
+<h3><span>Change Notifications</span></h3>
+
+<p>
+<%= error_messages_for :user %>
+</p>
+
+<%= render :partial => "common/uni_form_includes" %>
+
+<% form_for :user, :url => change_email_notification_path(@user), :html => { :method => :post, :class => "uniForm" } do |f| %>
+
+	<fieldset class="inlineLabels">
+		
+		<!--<legend>Email</legend>-->
+		
+		<div class="ctrlHolder">
+		  <p class="label">Email Notification:</p>
+		  	<label for="notification_enabled" class="inlineLabel">
+				<%= f.radio_button :notification_enabled, "false" %> Disabled
+			</label>
+		  	<label for="notification_enabled" class="inlineLabel">
+				<%= f.radio_button :notification_enabled, "true"  %> Weekly
+			</label>
+			<p class="formHint">
+				<small style="font-size:10px;">
+				Weekly email notifications will be sent if your training schedule requires attention.
+				</small>
+			</p>
+		</div>
+	
+	</fieldset>
+	
+<p>
+	<%= submit_tag 'Update' %> or <%= link_to 'Cancel', current_user %>
+</p>
+<% end %>

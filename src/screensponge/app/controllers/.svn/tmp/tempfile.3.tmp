@@ -1,0 +1,135 @@
+class ShowsController < ApplicationController
+
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :load_user
+
+  def add
+    #TODO - need some logic to prevent user from adding existing shows
+    show = Show.find(params[:id])
+    @c_show = show.clone
+    @c_show.user = current_user
+    respond_to do |format|
+      if @c_show.save
+        flash[:notice] = 'Shows was successfully cloned.'
+        format.html { redirect_to([current_user, @c_show]) }
+        format.xml  { render :xml => @c_show, :status => :created, :location => @c_show }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @c_show.errors, :status => :unprocessable_entity }
+      end
+    end   
+  end
+
+  def search
+    @query=params[:query]
+    if @query == nil
+      @query = ''
+    end
+    
+    per_page = 10
+    @shows = Show.find_with_ferret(@query,  
+                                   :page => params[:page], 
+                                   :per_page => per_page)
+    #                              :lazy => [:title]
+    
+    respond_to do |format|
+      format.html #
+      format.xml  { render :xml => @shows }
+    end
+  end
+
+  # GET /shows
+  # GET /shows.xml
+  def index
+    @shows = @user.shows.paginate(:all, :page => params[:page])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @shows }
+    end
+  end
+
+  # GET /shows/1
+  # GET /shows/1.xml
+  def show
+    @show = @user.shows.find(params[:id])
+    @connected_shows = @show.connected_shows
+    @annotation = @show.annotations.build
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @show }
+    end
+  end
+
+
+  # GET /shows/new
+  # GET /shows/new.xml
+  def new
+    @show = current_user.shows.build
+    @all_show_types = ShowType.all
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @show }
+    end
+  end
+
+  # GET /shows/1/edit
+  def edit
+    @show = current_user.shows.find(params[:id])
+  end
+
+  # POST /shows
+  # POST /shows.xml
+  def create
+    @show = current_user.shows.build(params[:show])
+
+    respond_to do |format|
+      if @show.save
+        flash[:notice] = 'Shows was successfully created.'
+        format.html { redirect_to([current_user, @show]) }
+        format.xml  { render :xml => @show, :status => :created, :location => @show }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /shows/1
+  # PUT /shows/1.xml
+  def update
+    @show = current_user.shows.find(params[:id])
+
+    respond_to do |format|
+      if @show.update_attributes(params[:show])
+        flash[:notice] = 'Shows was successfully updated.'
+        format.html { redirect_to([current_user, @show]) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @show.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /shows/1
+  # DELETE /shows/1.xml
+  def destroy
+    @show = current_user.shows.find(params[:id])
+    @show.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(user_shows_url(current_user)) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  
+  private
+  
+  def load_user
+    @user = find_user(params[:user_id])
+    @is_self = (logged_in? and current_user==@user) ? true : false
+  end
+  
+end

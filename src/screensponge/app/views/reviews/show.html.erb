@@ -1,0 +1,12 @@
+<% title "#{@show.full_name} | Review" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Review</h2>
+<br/>
+
+<p>
+  <b>Data:</b>
+  <%=h @review.entry %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

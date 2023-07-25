@@ -1,0 +1,19 @@
+<% title "#{@show.name} | Members" %>
+<h2><%= link_to @show.name, [@user,@show] %> | Members</h2>
+<br/>
+
+<p>
+<% "No members" if @membes.nil? %>
+<% "There are #{@members.size} members" if @membes.nil? %>
+</p>
+
+<% for member in @members %>
+	<div>
+		<%= render :partial => 'friends/friend', :locals=>{:friend => member, :show=>@show} %>
+	</div>
+<% end %>
+
+<br/>
+<p>
+<%= link_to 'Back to show', user_show_path(@user, @show) %>
+</p>

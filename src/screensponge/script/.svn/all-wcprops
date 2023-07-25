@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/!svn/ver/70/trunk/script
+END
+console
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/!svn/ver/7/trunk/script/console
+END
+server
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/!svn/ver/7/trunk/script/server
+END
+dbconsole
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/!svn/ver/7/trunk/script/dbconsole
+END
+destroy
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/!svn/ver/7/trunk/script/destroy
+END
+runner
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/!svn/ver/7/trunk/script/runner
+END
+about
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/!svn/ver/7/trunk/script/about
+END
+generate
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/!svn/ver/7/trunk/script/generate
+END
+ferret_server
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/70/trunk/script/ferret_server
+END
+plugin
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/!svn/ver/7/trunk/script/plugin
+END

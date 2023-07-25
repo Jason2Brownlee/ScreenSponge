@@ -1,0 +1,11 @@
+<div>
+	<%= link_to avatar_tag(friend_activity.user, {} , {:default=>'identicon', :width=>20, :height=>20}), friend_activity.user %>
+	<%= link_to friend_activity.user.humanized_name, friend_activity.user %>
+	and 
+	<%= link_to avatar_tag(friend_activity.friend, {} , {:default=>'identicon', :width=>20, :height=>20}), friend_activity.friend %>
+	<%= link_to friend_activity.friend.humanized_name, friend_activity.friend %>
+	<%= friend_activity.note %>
+	<span style="font-size:80%;">
+		<%= time_distance_or_time_stamp friend_activity.created_at %>
+	</span>
+</div>

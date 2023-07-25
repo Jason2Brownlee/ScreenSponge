@@ -1,0 +1,97 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/vendor/plugins/resource_hacks
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2008-08-07T04:16:37.000000Z
+2f81d86b9c273ff5ce8c16f3fadc0b8e
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+init.rb
+file
+
+
+
+
+2008-08-07T04:16:37.000000Z
+866a2de21485b4501444fb97613d3b28
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+tasks
+dir
+
+lib
+dir
+
+install.rb
+file
+
+
+
+
+2008-08-07T04:16:38.000000Z
+cbe738c10eba4ae2da8c6859c9723e44
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+MIT-LICENSE
+file
+
+
+
+
+2008-08-07T04:16:36.000000Z
+a7cd008057d62a5ac78b26da1f73ec04
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+uninstall.rb
+file
+
+
+
+
+2008-08-07T04:16:44.000000Z
+2a5fc883fe7f8dfe22ced24643d59ad4
+2008-08-07T09:11:32.217249Z
+52
+jason
+
+README
+file
+
+
+
+
+2008-08-07T04:16:36.000000Z
+a48c3bbdf0fdd0b96c198d6e4db04da7
+2008-08-07T09:11:32.217249Z
+52
+jason
+

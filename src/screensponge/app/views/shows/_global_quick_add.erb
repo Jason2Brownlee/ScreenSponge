@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/autocomplete/assets/skins/sam/autocomplete.css" />
+<link type="text/css" rel="stylesheet" href="/freebase/css/freebase-controls.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.2.3.min.js "></script>
+<script type="text/javascript" src="/freebase/freebase.suggest.js"></script> 
+
+<script type="text/javascript">
+    YAHOO.namespace("quickadd.container");
+    YAHOO.util.Event.onDOMReady(function(){
+        YAHOO.quickadd.container.quickAddOverlay = new YAHOO.widget.Overlay("quickAddModule", {
+            context: ["quick-add-dialog", "tr", "br"],
+            visible: false,
+            width: "395px"
+        });
+        YAHOO.quickadd.container.quickAddOverlay.render();
+        var toogle = false;
+        function onToggleAddShowButtonClick(event, obj){
+            if (toogle) {
+                obj.hide();
+                toogle = false;
+            }
+            else {
+                obj.show();
+                toogle = true;
+                document.getElementById("show_name").focus();
+            }
+        }
+        YAHOO.util.Event.addListener("toggleAddShowButton", "click", onToggleAddShowButtonClick, YAHOO.quickadd.container.quickAddOverlay);
+        YAHOO.util.Event.addListener("cancel", "click", onToggleAddShowButtonClick, YAHOO.quickadd.container.quickAddOverlay);
+        //YAHOO.util.Event.addListener("toggleAddShowButton", "click", YAHOO.quickadd.container.quickAddOverlay.hide, YAHOO.quickadd.container.quickAddOverlay, true);
+        //YAHOO.util.Event.addListener("cancel", "click", YAHOO.quickadd.container.quickAddOverlay.hide, YAHOO.quickadd.container.quickAddOverlay, true);
+    });
+</script>
+<div id="quick-add-dialog">
+  <div class="add-button">
+    <a href="#" id="toggleAddShowButton" name="toggleAddShowButton">
+      <%= image_tag 'btn_add.gif', :size => "14x14" %><b>Add new show</b>
+    </a>
+  </div>
+  <div id="quickAddModule" style="visibility:hidden">
+    <% form_tag new_user_show_path(current_user), :method=>:get do %>
+      <div class="yui-skin-sam">
+        <%= text_field_tag :show_name, "", :size=>40 %>
+      </div>
+      <br/>
+      <div>
+        <%= submit_tag "Create Show" %>
+        <a href="#" id="cancel">Cancel</a>
+      </div>
+    <% end %>		
+  </div>
+  <!-- quickAddModule -->
+</div>
+<!-- quickAddComponent -->
+
+<script type="text/javascript">
+jQuery( function($) {
+    $('#show_name').freebaseSuggest( {ac_param:{type:'/film/film'}} );
+});
+</script>
+
+

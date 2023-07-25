@@ -1,0 +1,17 @@
+<% 
+if is_owner?(message.show)
+	bg="background:#FFFFCC;"
+end
+%>
+
+<div style="padding-bottom:0.3em;padding-top:0.3em;">
+ <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;<%=bg %>">
+	<div>
+		<%= message.entry %>
+	</div>
+	<div style="font-size:80%;">
+		<b><%= link_to message.show.user.humanized_name, message.show.user %></b> |
+		<%= time_distance_or_time_stamp message.created_at %>
+	</div>
+ </div>
+</div>

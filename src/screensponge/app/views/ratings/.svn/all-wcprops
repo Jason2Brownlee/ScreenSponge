@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/!svn/ver/474/trunk/app/views/ratings
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/196/trunk/app/views/ratings/index.html.erb
+END
+_rating.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/474/trunk/app/views/ratings/_rating.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/196/trunk/app/views/ratings/show.html.erb
+END

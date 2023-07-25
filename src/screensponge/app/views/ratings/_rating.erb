@@ -1,0 +1,21 @@
+<% content_for :script do %>
+	<%= javascript_include_tag 'livepipe','rating', :cache => 'rating_c' %>
+<% end %>  
+
+<div id="show_rating" class="rating_container"></div>
+<script type="text/javascript">
+	YAHOO.util.Event.onDOMReady(function(){
+	var rating_six = new Control.Rating('show_rating', {
+                		                value:  <% if show.rating.nil? %>0<% else %><%= show.rating.score %><% end %>,
+                		          		rated: <% if logged_in? and show.user == current_user %>false<% else %>true<% end %>,
+                		        		min: 1,
+                		        		max: 10,
+										<% if logged_in? and show.user == current_user %>
+                		        		multiple:true,	   
+                						updateUrl: '<%= update_user_show_ratings_path(user, show) %>',
+                						updateParameterName: 'rating[score]',
+										<% end %>
+                		    			});    
+	}); 		
+</script>
+

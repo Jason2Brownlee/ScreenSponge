@@ -1,0 +1,43 @@
+<% 
+	# Friends WITH show
+	# exected: show
+	
+	# counts
+	# count_friends_have_show = show.user.count_friends_have_show(show)
+	# count_friends_want_show = show.user.count_friends_want_show(show)
+	# count_friends_seen_show = show.user.count_friends_seen_show(show)
+	
+	# friends
+	friends_have_show = show.user.friends_have_show(show,nil)
+	# friends_want_show = show.user.friends_want_show(show,nil)
+	# friends_seen_show = show.user.friends_seen_show(show,nil)
+	
+%>
+<% if show.possession==Show::Possession_want %>
+<div style="padding-top:0.5em">
+	<% if logged_in? and show.user == current_user %>
+		<!-- have -->
+		<% if !friends_have_show.nil? and friends_have_show.size>0 %>
+			<span style="font-size:90%" >Friends <span class="show-owner-have">have</span>:</span>
+			<% for user in friends_have_show %>
+				<span style="font-size:90%" ><%= link_to user.humanized_name, user %></span>
+					<span class="request-control-group">
+						<% request = Request.get_request(current_user, user, show) %>
+						<% if not request.empty? %>
+							<span class="request" style="font-size:90%">
+								<%= link_to 'REQUESTED', close_user_show_request_path(user, show, request.first), :method => :put %>
+							</span>
+						<% else %>
+							<span class="request-action">
+								<%= render :partial => 'requests/quick_request', :locals => { :user => user, :show => show} %>
+							</span>
+						<% end %>
+					</span>
+				</span>
+			<% end %>
+			</span>
+		<!-- end have -->
+		<% end %>
+	<% end %>
+</div>
+<% end %>

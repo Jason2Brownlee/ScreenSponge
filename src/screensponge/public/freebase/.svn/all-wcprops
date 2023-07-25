@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/487/trunk/public/freebase
+END
+freebase.select.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/487/trunk/public/freebase/freebase.select.js
+END
+freebase.suggest.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/487/trunk/public/freebase/freebase.suggest.js
+END
+freebase.controls.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/487/trunk/public/freebase/freebase.controls.js
+END

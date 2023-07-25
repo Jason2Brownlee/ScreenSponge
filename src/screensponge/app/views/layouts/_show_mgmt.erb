@@ -1,0 +1,41 @@
+<!-- search -->
+<div class="search-box" style="padding-top:0.8em;text-align:right;">
+    <% form_tag show_search_path, :method => 'get' do %>
+		<fieldset>
+	        <%= text_field_tag :search_show, params[:search_show], :size => 25 %>
+			<%= submit_tag "Find Shows", :name => nil %>
+		</fieldset>
+    <% end %>
+    <div style="font-size:70%;padding-top:0.3em;">
+        <span class="add-button"><%= link_to "Browse all shows", show_browse_path %>
+        </span>
+    </div>
+</div>
+<!--
+    <div class="yui-skin-sam">
+    	        <fieldset id="search-button">
+    </div>
+
+<script>
+    YAHOO.util.Event.onDOMReady(function(){
+        var addShowSelectionOptions = [{
+            text: "Everyone's shows",
+            value: 1
+        }, {
+            text: "My friend's shows",
+            value: 2
+        }, {
+            text: "My shows",
+            value: 2
+        }, ];
+        
+        var searchButton = new YAHOO.widget.Button({
+            type: "submit",
+            label: "find show",
+            name: "search",
+            menu: addShowSelectionOptions,
+            container: "search-button"
+        });
+    });
+</script>
+-->

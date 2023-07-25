@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  show: 
+  note: MyText
+  type: MyString
+  user: 
+  friend_id: 1
+  annotation: 
+
+two:
+  show: 
+  note: MyText
+  type: MyString
+  user: 
+  friend_id: 1
+  annotation: 

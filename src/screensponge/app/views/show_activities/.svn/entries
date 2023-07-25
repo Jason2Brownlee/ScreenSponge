@@ -1,0 +1,40 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/app/views/show_activities
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-19T01:39:14.188657Z
+207
+jason
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+_show_activity.html.erb
+file
+
+
+
+
+2008-08-19T01:37:51.000000Z
+144946a4d879b2ae2863c7865f384ef1
+2008-08-19T01:39:14.188657Z
+207
+jason
+

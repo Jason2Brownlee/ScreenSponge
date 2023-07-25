@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/498/trunk/app/views/shows
+END
+intention.js.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/469/trunk/app/views/shows/intention.js.rjs
+END
+wanted_and_have.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/293/trunk/app/views/shows/wanted_and_have.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/468/trunk/app/views/shows/index.html.erb
+END
+_show_owner_states.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/344/trunk/app/views/shows/_show_owner_states.erb
+END
+_show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/497/trunk/app/views/shows/_show.html.erb
+END
+new_nameless.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/426/trunk/app/views/shows/new_nameless.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/498/trunk/app/views/shows/show.html.erb
+END
+_show_filter.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/477/trunk/app/views/shows/_show_filter.erb
+END
+_friends_want_show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/407/trunk/app/views/shows/_friends_want_show.html.erb
+END
+_friends_with_show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/484/trunk/app/views/shows/_friends_with_show.html.erb
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/453/trunk/app/views/shows/edit.html.erb
+END
+members.erb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/344/trunk/app/views/shows/members.erb
+END
+add.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/105/trunk/app/views/shows/add.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/426/trunk/app/views/shows/new.html.erb
+END
+add_parent.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/480/trunk/app/views/shows/add_parent.erb
+END
+_add_show_split.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/329/trunk/app/views/shows/_add_show_split.erb
+END
+_global_quick_add.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/493/trunk/app/views/shows/_global_quick_add.erb
+END
+_add_show_buttons.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/484/trunk/app/views/shows/_add_show_buttons.erb
+END

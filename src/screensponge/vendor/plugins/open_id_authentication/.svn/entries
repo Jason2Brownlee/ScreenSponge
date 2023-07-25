@@ -1,0 +1,88 @@
+8
+
+dir
+499
+http://moviesvn.spicyelephant.com/trunk/vendor/plugins/open_id_authentication
+http://moviesvn.spicyelephant.com
+
+
+
+2008-08-05T13:04:36.688829Z
+25
+craig
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df0bcd7-2d7a-4989-93f8-89a9ce5dc0ed
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2008-08-05T22:25:23.000000Z
+b66b372df8374607d104228f41a06671
+2008-08-05T13:03:21.853574Z
+23
+craig
+
+tasks
+dir
+
+init.rb
+file
+
+
+
+
+2008-08-05T22:25:23.000000Z
+e355f9641c681957ae4bd41f15d0281f
+2008-08-05T13:03:21.853574Z
+23
+craig
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-08-05T22:25:23.000000Z
+63b7f08e55b1457e145ec16a526b1e60
+2008-08-05T13:03:21.853574Z
+23
+craig
+
+generators
+dir
+
+README
+file
+
+
+
+
+2008-08-05T22:25:23.000000Z
+bd334ec031f435c54fb02050e9a24ecb
+2008-08-05T13:03:21.853574Z
+23
+craig
+

@@ -1,0 +1,272 @@
+class Show < ActiveRecord::Base
+  
+  # validation
+  validates_presence_of :name, :user
+  
+  # relationships
+  has_many :annotations, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
+  
+  belongs_to :user
+  belongs_to :parent, :class_name => 'Show', :foreign_key => 'parent_id'
+  has_many :children, :class_name => 'Show', :foreign_key => 'parent_id', :group=>"global_id"
+
+  before_save :make_default_global_id
+  
+  # show annotations
+  has_many :messages, :order=>"created_at DESC"
+  has_many :reviews, :order=>"created_at DESC"
+  has_many :plots, :order=>"created_at DESC"
+  has_many :pictures, :order=>"created_at DESC"
+  has_many :intentions, :order=>"created_at DESC"
+  has_many :types, :order=>"created_at DESC"
+  has_many :covers, :order=>"created_at DESC"
+  has_many :links, :order=>"created_at DESC"
+  has_many :videos, :order=>"created_at DESC"
+  has_many :possessions
+  # other annotations
+  has_one :rating, :dependent => :destroy
+  has_many :events, :order=>"created_at DESC", :dependent => :destroy
+
+
+  # super addvanced annotations
+  named_scope :want, :conditions => ["annotations.entry=?",Possession.want], :include=>:possessions
+  named_scope :have, :conditions => ["annotations.entry=?",Possession.have], :include=>:possessions
+  
+
+  
+  def full_name
+    return self.name if self.parent.nil?
+    return "#{self.parent.full_name}: #{self.name}"
+  end
+  
+  # mark the show as seen
+  def seen
+    intention = intentions.new
+    intention.entry = Intention.seen()
+    intentions << intention
+  end
+  
+  # mark the show as want
+  def want
+    possession = possessions.new
+    possession.entry = Possession.want()
+    possessions << possession
+  end
+  
+  # mark the show as have
+  def have
+    possession = possessions.new
+    possession.entry = Possession.have()
+    possessions << possession
+    seen
+  end
+  
+  def has_seen?
+    if not intentions.empty?
+      return true if intentions.first.has_seen?
+    end
+    return false
+  end
+  
+  def is_want?
+    if not possessions.empty?
+      return true if possessions.first.is_want?
+    end
+    return false
+  end
+  
+  def is_have?
+    if not possessions.empty?
+      return true if possessions.first.is_have?
+    end
+    return false
+  end
+  
+  def user_clone(user)
+    cshow = clone
+    cshow.user = user
+    cshow.parent=nil
+    cshow.created_at = Time.now
+    # copy movie type
+    self.types.each do |type|
+      ctype = type.clone
+      ctype.created_at = Time.now
+      cshow.types << ctype
+    end
+    return cshow
+  end
+  
+  def self.per_page
+    20
+  end
+  
+  def recent_activity(limit=10)
+    # only covers show add and edit
+    return activities.find(:all, :limit=>limit, :order=>"created_at DESC")
+  end
+  
+  def recent_group_activity(limit=10)
+    # covers show and annotation activity
+    return Activity.find(:all, :conditions=>["shows.global_id=?", self.global_id], 
+      :include=>:show, :limit=>limit, :order=>"activities.created_at DESC")
+  end
+  
+  def self.popular_shows(limit=5)
+      sql = "SELECT s.*, 
+            (select count(global_id) from shows where global_id=s.global_id group by global_id) as member_count 
+            FROM shows s 
+            GROUP BY global_id
+            ORDER BY member_count DESC
+            LIMIT ?"    
+      return Show.find_by_sql( [sql, limit]) 
+  end
+  
+  def self.recent_shows(limit=5)
+    Show.find(:all, :order=>"created_at DESC", :limit=>limit, :group=>"global_id")
+  end
+  
+  # users trailer, or random from group
+  def trailer
+    # why doesn't this work
+    self.videos.find(:first) || Video.find(:first, 
+      :conditions => ["shows.global_id=?", self.global_id], 
+      :include=>:show, :order=>"RAND()")
+  end
+  
+  # users plot, or random from group
+  def plot
+    # why doesn't this work
+    self.plots.find(:first) || Plot.find(:first, 
+      :conditions => ["shows.global_id=?", self.global_id], 
+      :include=>:show, :order=>"RAND()")
+  end
+  
+
+  # users cover, or random from group
+  def cover
+    return self.covers.find(:first) || Cover.find(:first, 
+      :conditions => ["shows.global_id=?", self.global_id], 
+      :include=>:show, :order=>"RAND()")
+  end
+
+  # group annotations
+  def group_annotations(type, limit=nil)
+    return Annotation.find(:all, 
+      :conditions => ["shows.global_id=? and type=?", self.global_id, type], 
+      :include => :show, :limit=>limit, :order=>"annotations.created_at DESC")
+  end
+
+  def group_messages(limit=nil)
+    return group_annotations("Message", limit)
+  end
+  
+  def count_group_messages
+    return Message.count(:all, :conditions => ["shows.global_id=?", self.global_id], :include => :show)
+  end
+  
+  def group_reviews(limit=nil)
+    return group_annotations("Review", limit)
+  end
+  
+  def group_plots(limit=nil)
+    return group_annotations("Plot", limit)
+  end
+  
+  def group_pictures(limit=nil)
+    return group_annotations("Picture", limit)
+  end
+  
+  def group_intentions(limit=nil)
+    return group_annotations("Intention", limit)
+  end
+  
+  def group_types(limit=nil)
+    return group_annotations("Type", limit)
+  end
+  
+  def group_covers(limit=nil)
+    return group_annotations("Cover", limit)
+  end
+  
+  def group_videos(limit=nil)
+    return group_annotations("Video", limit)
+  end
+  
+  def group_links(limit=nil)
+    return group_annotations("Link", limit)
+  end
+
+  def group_shows
+    return Show.find(:all, :conditions => ["global_id=?", self.global_id])
+  end
+  
+  def group_members(limit=nil)
+    return User.find(:all, 
+      :conditions=>["shows.global_id=?", self.global_id], 
+      :include=>:shows, :limit=>limit, :order=>"shows.created_at DESC")
+  end
+  
+  
+  
+  def count_group_members
+    return User.count(:all, 
+      :conditions=>["shows.global_id=?", self.global_id], :include=>:shows)
+  end
+  
+
+  
+  def self.top_related_for_user(query, user, limit = 50)
+     sql = 'select s.*, count(global_id) count, 
+              ( select u.id from users u
+                join shows s2 
+                on u.id = s2.user_id
+                where u.id = ? 
+                and s2.global_id = s.global_id ) user_has
+           from shows s 
+           where name like ? 
+           group by s.global_id, s.name
+           order by count desc
+           limit ?'
+    return Show.find_by_sql( [sql, user.id, "%#{query}%", limit]) 
+  end
+  
+  def self.top_related(query, limit = 50)
+    sql = 'select s.*, count(global_id) count
+           from shows s 
+           where name like ? 
+           group by s.global_id, s.name
+           order by count desc
+           limit ?'
+    return Show.find_by_sql( [sql, "%#{query}%", limit])
+  end
+  
+  def self.find_by_user_and_annotation(user, type, entry, order, page)  
+
+    return Show.paginate_by_sql( ['select s.*
+                                   from shows s
+                                   right outer join annotations a
+                                   on s.id = a.show_id 
+                                   where s.user_id = ?
+                                   and a.type = ? 
+                                   and a.entry = ?
+                                   order by s.' + order, user.id, type, entry], :page => page)        
+  end
+  
+  def self.find_show_groups(page)
+    return Show.paginate_by_sql( ['select *
+                                  from shows s
+                                  group by s.global_id'], :page => page )
+  end
+ 
+  
+  private
+  
+  def make_default_global_id
+    # only create a default global id if not already set
+    if self.global_id.nil? or self.global_id.blank?
+      self.global_id = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    end
+  end
+  
+end

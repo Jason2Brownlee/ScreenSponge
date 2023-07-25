@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/!svn/ver/457/trunk/db/migrate
+END
+20080811073331_rename_data_to_datablob_on_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/104/trunk/db/migrate/20080811073331_rename_data_to_datablob_on_shows.rb
+END
+20080806020946_create_friendships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/34/trunk/db/migrate/20080806020946_create_friendships.rb
+END
+20080807043200_add_permalink_to_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/89/trunk/db/migrate/20080807043200_add_permalink_to_users.rb
+END
+20080828064334_add_closed_timestamp_requests.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/407/trunk/db/migrate/20080828064334_add_closed_timestamp_requests.rb
+END
+20080805120251_add_open_id_authentication_tables.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/16/trunk/db/migrate/20080805120251_add_open_id_authentication_tables.rb
+END
+20080806031105_addusertoshows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/34/trunk/db/migrate/20080806031105_addusertoshows.rb
+END
+20080808034521_add_global_id_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/60/trunk/db/migrate/20080808034521_add_global_id_shows.rb
+END
+20080818233444_add_parent_id_to_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/201/trunk/db/migrate/20080818233444_add_parent_id_to_shows.rb
+END
+20080806014113_create_view_states.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/89/trunk/db/migrate/20080806014113_create_view_states.rb
+END
+20080806055346_change_show_types_on_show.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/40/trunk/db/migrate/20080806055346_change_show_types_on_show.rb
+END
+20080722032730_add_last_signin_to_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/16/trunk/db/migrate/20080722032730_add_last_signin_to_user.rb
+END
+20080705065001_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/16/trunk/db/migrate/20080705065001_create_users.rb
+END
+20080829015404_add_type_to_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/422/trunk/db/migrate/20080829015404_add_type_to_shows.rb
+END
+20080806012018_create_show_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/269/trunk/db/migrate/20080806012018_create_show_types.rb
+END
+20080808011546_add_time_zone_to_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/55/trunk/db/migrate/20080808011546_add_time_zone_to_users.rb
+END
+20080722032731_add_notification_to_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/16/trunk/db/migrate/20080722032731_add_notification_to_user.rb
+END
+20080819010555_create_events.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/212/trunk/db/migrate/20080819010555_create_events.rb
+END
+20080814044553_add_unique_index_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/130/trunk/db/migrate/20080814044553_add_unique_index_shows.rb
+END
+20080806023146_create_notification_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/89/trunk/db/migrate/20080806023146_create_notification_types.rb
+END
+20080705070802_create_permissions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/89/trunk/db/migrate/20080705070802_create_permissions.rb
+END
+20080811010108_add_type_to_annotations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/97/trunk/db/migrate/20080811010108_add_type_to_annotations.rb
+END
+20080818062325_create_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/196/trunk/db/migrate/20080818062325_create_ratings.rb
+END
+20080811022151_remove_synopsis_from_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/98/trunk/db/migrate/20080811022151_remove_synopsis_from_shows.rb
+END
+20080829043314_remove_invalid_show_parents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/427/trunk/db/migrate/20080829043314_remove_invalid_show_parents.rb
+END
+20080722034956_user_indexes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/16/trunk/db/migrate/20080722034956_user_indexes.rb
+END
+20080808040356_remove_some_columns_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/60/trunk/db/migrate/20080808040356_remove_some_columns_shows.rb
+END
+20080806022328_create_show_url_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/89/trunk/db/migrate/20080806022328_create_show_url_types.rb
+END
+20080822014001_shows_add_intention_possession.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/318/trunk/db/migrate/20080822014001_shows_add_intention_possession.rb
+END
+20080808043211_create_annotations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/60/trunk/db/migrate/20080808043211_create_annotations.rb
+END
+20080811004431_drop_tags_from_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/98/trunk/db/migrate/20080811004431_drop_tags_from_shows.rb
+END
+20080806014501_create_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/34/trunk/db/migrate/20080806014501_create_shows.rb
+END
+20080807012213_add_columns_show.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/51/trunk/db/migrate/20080807012213_add_columns_show.rb
+END
+20080808043155_create_annotation_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/98/trunk/db/migrate/20080808043155_create_annotation_types.rb
+END
+20080806014950_create_medias.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/89/trunk/db/migrate/20080806014950_create_medias.rb
+END
+20080829235719_find_bad_parents_second_attempt.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/457/trunk/db/migrate/20080829235719_find_bad_parents_second_attempt.rb
+END
+20080815235812_create_activities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/163/trunk/db/migrate/20080815235812_create_activities.rb
+END
+20080806022052_create_acquired_states.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/89/trunk/db/migrate/20080806022052_create_acquired_states.rb
+END
+20080826012446_create_requests.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/355/trunk/db/migrate/20080826012446_create_requests.rb
+END
+20080705070610_create_roles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/16/trunk/db/migrate/20080705070610_create_roles.rb
+END
+20080812020406_drop_show_type_from_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/108/trunk/db/migrate/20080812020406_drop_show_type_from_shows.rb
+END

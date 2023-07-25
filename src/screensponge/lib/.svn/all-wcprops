@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/!svn/ver/104/trunk/lib
+END
+authenticated_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/17/trunk/lib/authenticated_test_helper.rb
+END
+authenticated_system.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/17/trunk/lib/authenticated_system.rb
+END
+validates_uri_existence_of.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/104/trunk/lib/validates_uri_existence_of.rb
+END

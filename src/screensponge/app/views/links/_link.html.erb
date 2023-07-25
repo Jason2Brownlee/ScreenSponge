@@ -1,0 +1,20 @@
+<% 
+if is_owner?(link.show)
+	bg="background:#FFFFCC;"
+end
+%>
+
+<div style="padding-bottom:0.3em;padding-top:0.3em;">
+ <div style="border:1px solid #d5d5d5;padding: 5px 5px 5px 5px;<%=bg %>">
+	<div>
+		<%= link_to link.entry, link.entry %>
+	</div>
+	<div style="font-size:80%;">
+		<b><%= link_to link.show.user.humanized_name, link.show.user %></b> |
+		<% if is_owner?(link.show) %>
+			<%= link_to "Edit", edit_user_show_link_path(current_user, link.show, link) %> |
+		<% end %>
+		<%= time_distance_or_time_stamp link.created_at %>
+	</div>
+ </div>
+</div>

@@ -1,0 +1,31 @@
+<ul id="globalnav">
+    <% if logged_in? %>
+    <li>
+        Signed in as <b><%= link_to current_user.login, current_user %></b>
+        <% if current_user.has_subscribed_role? %>
+        <b>*</b>
+        <% end %>
+    </li>
+    <li>
+        <%= link_to 'Help', help_path %>
+    </li>
+    <% if current_user.has_administrator_role? %>
+    <li>
+        <%= link_to 'Admin', users_path %>
+    </li>
+    <% end %>
+    <li>
+        <%= link_to 'Settings', edit_user_path(current_user) %>
+    </li>
+    <li>
+        <%= link_to 'Logout', logout_url %>
+    </li>
+    <% else %>
+    <li>
+        <%= link_to 'Login', new_session_path %>
+    </li>
+    <li>
+        <%= link_to 'Join', new_user_path %>
+    </li>
+    <% end %>
+</ul>

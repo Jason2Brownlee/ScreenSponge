@@ -1,0 +1,21 @@
+<% 
+	# Friends WANT show
+
+	# exected: show
+	friends_want_show = show.user.friends_want_show(show,nil)
+	count_friends_want_show = show.user.count_friends_want_show(show)
+	# count_friends_want_show = show.user.count_friends_want_show(show)
+%>
+<div style="font-size:90%;padding-top:0.5em">
+	<% if count_friends_want_show > 0 %>
+		<span>friend's that want:</span>
+		<% for user in friends_want_show %>
+			<%= link_to user.humanized_name, user %>
+			<% request = Request.get_requested(current_user, user, show) %>
+			<% if not request.empty? %>
+			requested <span style="font-size:90%">(<%= time_distance_or_time_stamp request.first.created_at %>)</span>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+

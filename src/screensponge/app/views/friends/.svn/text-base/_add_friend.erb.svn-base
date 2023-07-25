@@ -1,0 +1,8 @@
+<% 
+	# Expected: user
+%>
+<% if can_add_friend?(user) %>
+	<% form_for(:friendship, :url => user_friends_path(:user_id=>current_user, :friend_id => user)) do |f| %>
+      <%= submit_tag "Add to My Friends" %>
+    <%end%>
+<% end %>

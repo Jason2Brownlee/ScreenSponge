@@ -1,0 +1,19 @@
+<% content_for :stylesheet do %>
+	<%= stylesheet_link_tag 'show', :cache => 'show_c' %>
+<% end %>
+
+<% title "#{@show.full_name} | Events" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Events</h2>
+<br/>
+
+<div>
+	A listing of all covers for the show <%= @show.full_name %>.
+</div>
+
+<br />
+<div id="show-event" class="show-annotation-list">
+	<%= render :partial => @events %>
+</div>
+<br />
+
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

@@ -1,0 +1,13 @@
+Hi <%= @requested_user.humanized_name %>,
+
+<%= @requesting_user.humanized_name %> has requested the show '<%= @requested_show.full_name %>'. To share the show just reply to this email to send <%= @requesting_user.humanized_name %> a message.
+
+<% if !@request.message.nil? %>
+<%= @requesting_user.humanized_name %> said, 
+	"<%= @request.message %>"
+<% end %>
+
+-----------------------------------------------------------------------
+
+Screen Sponge
+http://<%= "#{SITE_URL}" %>

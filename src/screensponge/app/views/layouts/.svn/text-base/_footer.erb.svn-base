@@ -1,0 +1,6 @@
+<div class="legal">
+    &copy;2008 <%= company_name %> |
+	<%= link_to 'Terms', terms_path %> |
+	<%= link_to 'Privacy', privacy_path %> |
+	<%= link_to 'Feedback', feedback_path %>
+</div> <!-- legal -->

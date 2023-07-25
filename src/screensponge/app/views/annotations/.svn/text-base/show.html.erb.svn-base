@@ -1,0 +1,18 @@
+<p>
+  <b>Show:</b>
+  <%=h @annotation.show %>
+</p>
+
+<p>
+  <b>Annotation type:</b>
+  <%=h @annotation.annotation_type %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%=h @annotation.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_annotation_path(@annotation) %> |
+<%= link_to 'Back', annotations_path %>

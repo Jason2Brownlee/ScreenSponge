@@ -1,0 +1,37 @@
+<h1>Listing shows: <%= @user.login %></h1>
+
+<table>
+  <tr>
+	<th>User</th>
+    <th>Type</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Note</th>
+    <th>Rating</th>
+    <th>Tags</th>
+
+  </tr>
+
+<% for shows in @shows %>
+  <tr>
+	<td><%=h shows.user.login %></td>
+    <td><%=h shows.show_type.name %></td>
+    <td><%=h shows.name %></td>
+    <td><%=h shows.description %></td>
+    <td><%=h shows.note %></td>
+    <td><%=h shows.rating %></td>
+    <td><%=h shows.tags %></td>
+    <td><%= link_to 'Show', shows %></td>
+    <td><%= link_to 'Edit', edit_shows_path(shows) %></td>
+    <td><%= link_to 'Destroy', shows, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<<<<<<< .mine
+<%= link_to 'New shows', new_user_show_path(@user) %>
+=======
+<!-- link_to 'New shows', new_shows_path(:id => @user) -->
+>>>>>>> .r39

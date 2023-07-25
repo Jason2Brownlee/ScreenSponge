@@ -1,0 +1,3 @@
+page[:annotations].replace_html :partial => 'annotations/annotations', 
+                                :locals  => {:annotations => @show.annotations,
+                                             :show => @show}

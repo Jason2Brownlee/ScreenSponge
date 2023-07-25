@@ -1,0 +1,18 @@
+<table width="100%" >
+<<<<<<< .mine
+
+=======
+  <tr id="shows_title">
+  	<th>Name</th>
+    <th>Type</th>
+    <th>Synopsis</th>
+	<th>Global Snap</th>
+  </tr>
+>>>>>>> .r97
+<% for show in shows %>
+	<%= render :partial => 'show',
+	           :locals  => {:show => show} %>
+<% end %>
+</table>
+
+

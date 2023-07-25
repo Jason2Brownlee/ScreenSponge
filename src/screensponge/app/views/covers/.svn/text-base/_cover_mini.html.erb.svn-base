@@ -1,0 +1,1 @@
+<%= image_tag(cover.entry, {:height => '50', :width => '35',:alt=>""}) %>

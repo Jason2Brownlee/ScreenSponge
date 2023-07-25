@@ -1,0 +1,57 @@
+<% 
+	# Expected: friendship
+	friend = friendship.friend
+	user = friendship.user
+	is_self = (logged_in? and current_user==user)
+%>
+
+<div style="margin: 0px 0 5px 0px;">
+ <table class="friend" width="100%">
+ <tr valign="top">
+ <td width="35px">
+		<%= link_to avatar_tag(friend, {} , {:default => 'identicon', :width => 40, :height => 40}), user_shows_path(friend) %>
+ </td>
+ <td>
+	<div>
+		<span style="font-size:120%;">
+			<%= link_to friend.humanized_name, user_shows_path(friend) %>
+		</span>
+	</div>
+	<div style="font-size:80%;">
+		<%= link_to "#{pluralize(friend.shows.count, 'Show')}", user_shows_path(friend) %> |
+		<%= "#{pluralize(friend.friends.count, 'Friend')}" %>
+	</div>
+	<div style="font-size:80%;">
+<!-- accepted		 -->
+		<% if friendship.is_accepted? %>
+			Friend since <%= time_distance_or_time_stamp friendship.created_at %> 
+			<% if is_self %>
+				| <span class="request"><%= link_to_if is_self, 'remove', user_friend_path(:user_id => user, :id => friend), :method => :delete, :confirm => 'Are you sure?' %></span>
+			<% end %>
+<!-- pending			 -->
+		<% elsif friendship.is_pending? %>
+			Friendship pending since <%= time_distance_or_time_stamp friendship.created_at %>
+			<% if is_self %>
+			| 
+			<span class="request"><%= link_to_if is_self, 'Accept', user_friend_path(:user_id => user, :id => friend), :method => :put, :confirm => 'Accept friend request! Are you sure?' %>
+			</span> 
+			|
+			<span class="request">
+			<%= link_to_if is_self, 'Reject', user_friend_path(:user_id => user, :id => friend), :method => :delete, :confirm => 'Reject friend request! Are you sure?' %>
+			</span>
+			<% end %>
+<!-- requested			 -->
+		<% elsif friendship.is_requested? %>
+			Friendship requested <%= time_distance_or_time_stamp friendship.created_at %>
+			<% if is_self %>
+				| 				
+				<span class="request"><%= link_to_if is_self, 'Cancel', user_friend_path(:user_id => user, :id => friend), :method => :delete, :confirm => 'Are you sure?' %></span>
+			<% end %>
+		<% end %>
+		
+		<%= add_friend_link(friend) %>
+	</div>
+ </td></tr>
+ </table>
+</div>
+

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/495/trunk/app/views/events
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/453/trunk/app/views/events/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/495/trunk/app/views/events/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/453/trunk/app/views/events/new.html.erb
+END
+_event.erb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/494/trunk/app/views/events/_event.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/453/trunk/app/views/events/show.html.erb
+END

@@ -1,0 +1,22 @@
+<% 
+# Expected: request
+
+# helpers
+show = request.wanted_show
+want_user = show.user
+have_user = request.requested_show.user
+%>
+
+<div>
+	<%= link_to show.full_name, [want_user, show] %>
+	from
+	<%= link_to avatar_tag(have_user, {} , {:default=>'identicon', :width=>15, :height=>15}), have_user %>
+	<%= link_to have_user.humanized_name, have_user %>
+	<div style="font-size:80%">
+		<%= time_distance_or_time_stamp request.created_at %>,
+		<span class="request">
+		<%= link_to 'close', close_user_show_request_path(want_user, show, request), :method => :put %>
+		</span>
+	</div>
+	<br/>
+</div>

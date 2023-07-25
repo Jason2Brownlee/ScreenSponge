@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/407/trunk/app/views/activities
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/163/trunk/app/views/activities/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/407/trunk/app/views/activities/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/163/trunk/app/views/activities/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/163/trunk/app/views/activities/show.html.erb
+END

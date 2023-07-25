@@ -1,0 +1,167 @@
+class Show < ActiveRecord::Base
+  
+  # ferret integration
+#   acts_as_ferret :fields => { :name => {:store => :yes, :boost => 2}, 
+#                               :global_id => {:store => :yes, 
+#                                              :index => :untokenized},
+#                               :user => {},
+#                               :annotations => { :entry, :type }
+#                             }
+
+  # validation
+  validates_presence_of :name, :user
+  
+  # relationships
+  has_many :annotations, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
+  belongs_to :user
+
+  before_save :make_default_global_id
+  
+  
+  # show annotations
+  has_many :messages, :order=>"created_at DESC"
+  has_many :reviews, :order=>"created_at DESC"
+  has_many :plots, :order=>"created_at DESC"
+  has_many :pictures, :order=>"created_at DESC"
+  has_many :intentions, :order=>"created_at DESC"
+  has_many :types, :order=>"created_at DESC"
+  has_many :covers, :order=>"created_at DESC"
+  
+#  def initialize
+#    #self.intentions.build
+#  end
+  
+  def user_clone(user)
+    cshow = clone
+    cshow.user = user
+    cshow.created_at = Time.zone.now
+    # copy movie type
+    self.types.each do |type|
+      ctype = type.clone
+      ctype.created_at = Time.zone.now
+      cshow.types << ctype
+    end
+    return cshow
+  end
+  
+  def self.per_page
+    20
+  end
+  
+  
+  # random plot, or random from group
+  def plot
+    # why doesn't this work
+    self.plots.find(:first) || Plot.find(:first, 
+      :conditions => ["shows.global_id=?", self.global_id], 
+      :include=>:show, :order=>"RAND()")
+  end
+  
+
+  # users cover, or random from group
+  def cover
+    return self.covers.find(:first) || Cover.find(:first, 
+      :conditions => ["shows.global_id=?", self.global_id], 
+      :include=>:show, :order=>"RAND()")
+  end
+
+  # group annotations
+  def group_annotations(type, limit=nil)
+    return Annotation.find(:all, 
+      :conditions => ["shows.global_id=? and type=?", self.global_id, type], 
+      :include => :show, :limit=>limit, :order=>"annotations.created_at DESC")
+  end
+
+  def group_messages(limit=nil)
+    return group_annotations("Message", limit)
+  end
+  
+  def group_reviews(limit=nil)
+    return group_annotations("Review", limit)
+  end
+  
+  def group_plots(limit=nil)
+    return group_annotations("Plot", limit)
+  end
+  
+  def group_pictures(limit=nil)
+    return group_annotations("Picture", limit)
+  end
+  
+  def group_intentions(limit=nil)
+    return group_annotations("Intention", limit)
+  end
+  
+  def group_types(limit=nil)
+    return group_annotations("Type", limit)
+  end
+  
+  def group_covers(limit=nil)
+    return group_annotations("Cover", limit)
+  end
+
+  def group_shows
+    return Show.find(:all, :conditions => ["global_id=?", self.global_id])
+  end
+  
+  def group_members(limit=nil)
+    return User.find(:all, 
+      :conditions=>["shows.global_id=?", self.global_id], :include=>:shows, :limit=>limit)
+  end
+
+  
+  def self.top_related_for_user(query, user, limit = 50)
+     sql = 'select s.*, count(global_id) count, 
+              ( select u.id from users u
+                join shows s2 
+                on u.id = s2.user_id
+                where u.id = ? 
+                and s2.global_id = s.global_id ) user_has
+           from shows s 
+           where name like ? 
+           group by s.global_id, s.name
+           order by count desc
+           limit ?'
+    return Show.find_by_sql( [sql, user.id, "%#{query}%", limit]) 
+  end
+  
+  def self.top_related(query, limit = 50)
+    sql = 'select s.*, count(global_id) count
+           from shows s 
+           where name like ? 
+           group by s.global_id, s.name
+           order by count desc
+           limit ?'
+    return Show.find_by_sql( [sql, "%#{query}%", limit])
+  end
+  
+  def self.find_by_user_and_type(user, type, page, order)  
+    
+    return Show.paginate_by_sql( ['select s.*
+                                   from shows s
+                                   right outer join annotations a
+                                   on s.id = a.show_id 
+                                   where s.user_id = ?
+                                   and a.type = ? 
+                                   and a.entry = ?
+                                   order by s.' + order, user.id, 'Type', type], :page => page)        
+  end
+  
+  def self.find_show_groups(page)
+    return Show.paginate_by_sql( ['select *
+                                  from shows s
+                                  group by s.global_id'], :page => page )
+  end
+ 
+  
+  private
+  
+  def make_default_global_id
+    # only create a default global id if not already set
+    if self.global_id.nil? or self.global_id.blank?
+      self.global_id = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    end
+  end
+  
+end

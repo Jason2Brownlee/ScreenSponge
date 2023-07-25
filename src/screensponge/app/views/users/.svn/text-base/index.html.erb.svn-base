@@ -1,0 +1,41 @@
+<% title 'Admin' %>
+<h2>Admin: All Users</h2>
+<br/>
+
+<p>
+	A total of 
+	<b><%= User.count() %> users</b> have created
+	<b><%= Show.count(:select=>"Distinct global_id") %> distinct shows</b>, 
+	collectively totalling <b><%= Show.count() %> shows</b> in user profiles.
+</p>
+
+<p>
+	A total of 
+	<b><%= User.count_subscribed_users %></b> 
+	users have premium accounts.
+</p>
+<br/>
+<%= link_to "All users", users_path %> |
+<%= link_to "Premium users", users_path(:premium=>'true') %>
+<br/><br/>
+
+<table width="100%">
+  <tr>
+    <th>Username</th>
+    <th>Details</th>
+	<th>Joined</th>
+	<th>Premium?</th>
+    <th>Enabled?</th>
+    <th>Roles</th>
+  </tr>
+    <%= render :partial => 'user', :collection => @users %>
+</table>
+
+
+<div class="apple_pagination">
+      <%= will_paginate @users, :container => false %>
+</div>
+<br>
+
+
+

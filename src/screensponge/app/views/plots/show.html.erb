@@ -1,0 +1,12 @@
+<% title "#{@show.full_name} | Description" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Description</h2>
+<br/>
+
+<p>
+  <b>Data:</b>
+  <%=h @plot.entry %>
+</p>
+
+
+<%= link_to 'Edit', edit_plot_path(@plot) %> |
+<%= link_to 'Back', plots_path %>

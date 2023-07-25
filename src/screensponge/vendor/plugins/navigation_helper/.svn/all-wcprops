@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/Rakefile
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/init.rb
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/install.rb
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/MIT-LICENSE
+END
+README.textile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/README.textile
+END
+uninstall.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/237/trunk/vendor/plugins/navigation_helper/uninstall.rb
+END

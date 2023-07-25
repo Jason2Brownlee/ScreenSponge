@@ -1,0 +1,26 @@
+<% title "#{@show.full_name} | Event" %>
+<h2><%= link_to @show.full_name, [@user,@show] %> | Event</h2>
+<br/>
+
+<% form_for([current_user, @show, @event]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :when %><br />
+    <%= f.datetime_select :when %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<br/>
+<%= link_to 'Back to show', user_show_path(@user, @show) %>

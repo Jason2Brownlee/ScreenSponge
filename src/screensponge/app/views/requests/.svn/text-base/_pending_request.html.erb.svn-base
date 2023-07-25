@@ -1,0 +1,20 @@
+<% 
+# Expected: request
+
+# helpers
+
+want_user = request.wanted_show.user
+requested_show = request.requested_show
+have_user = requested_show.user
+%>
+
+<div>
+	<%= link_to avatar_tag(want_user, {} , {:default=>'identicon', :width=>15, :height=>15}), want_user %>
+	<%= link_to want_user.humanized_name, want_user %>
+	requested
+	<%= link_to requested_show.full_name, [have_user, requested_show] %>
+	<div style="font-size:80%">
+		<%= time_distance_or_time_stamp request.created_at %>
+	</div>
+	<br/>
+</div>

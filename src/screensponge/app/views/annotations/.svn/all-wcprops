@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/72/trunk/app/views/annotations
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/67/trunk/app/views/annotations/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/59/trunk/app/views/annotations/index.html.erb
+END
+destroy.js.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/71/trunk/app/views/annotations/destroy.js.rjs
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/59/trunk/app/views/annotations/new.html.erb
+END
+_annotations.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/72/trunk/app/views/annotations/_annotations.erb
+END
+_form.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/71/trunk/app/views/annotations/_form.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/59/trunk/app/views/annotations/show.html.erb
+END
+create.js.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/71/trunk/app/views/annotations/create.js.rjs
+END
