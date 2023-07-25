@@ -32,4 +32,4 @@ A snapshot of the code for the website was saved before the site was shutdown at
 # Sources
 
 * [ScreenSponge.com](https://web.archive.org/web/20080831041827/http://screensponge.com:80/) (archived)
-* github.com/jbrownlee/screensponge
+* [github.com/jbrownlee/screensponge](https://web.archive.org/web/20090829120838/http://github.com/jbrownlee/screensponge/tree/master) (archived)
